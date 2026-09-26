@@ -98,12 +98,16 @@ def main():
     neuromodulation_report = (OUT / 'neuromodulation-doom-experiment.md').read_bytes()
     hedgehog_report = (OUT / 'hedgehog-experiment-data-and-value.md').read_bytes()
     critique_report = (OUT / 'experiment-critique.md').read_bytes()
+    alternative_report = (OUT / 'alternative-experiment-proposals.md').read_bytes()
+    alternative_audit_bytes = (OUT / 'alternative-experiments-audit.json').read_bytes()
+    alternative_audit = json.loads(alternative_audit_bytes)
     hedgehog_audit = json.loads((OUT / 'hedgehog-data-audit.json').read_text())
     manifest = {
         'review_date': FEEDING_REVIEW['reviewed_on'],
         'collection_review_date': '2026-09-25',
         'compiled_on': '2026-09-26',
         'repositories': len(ROWS) + 1,
+        'repository_count_scope': 'Original 96-entry catalog plus feeding review; excludes code inspected in the later alternative-experiment search.',
         'catalog_repositories': len(ROWS),
         'additional_repository_reviews': [{
             'repository': FEEDING_REVIEW['repository'],
@@ -139,6 +143,19 @@ def main():
             'review_type': 'Separate critic-agent literature and selected code review',
             'simulation_rerun': False,
         },
+        'alternative_experiment_report': {
+            'path': 'reports/alternative-experiment-proposals.md',
+            'words': len(alternative_report.decode().split()),
+            'sha256': hashlib.sha256(alternative_report).hexdigest(),
+            'audit': 'reports/alternative-experiments-audit.json',
+            'audit_sha256': hashlib.sha256(alternative_audit_bytes).hexdigest(),
+            'search_branches': alternative_audit['review_method']['search_branches'],
+            'shortlisted_candidates': alternative_audit['review_method']['shortlisted_candidates'],
+            'dedicated_critics': alternative_audit['review_method']['dedicated_critics'],
+            'selected_candidates': alternative_audit['review_method']['selection'],
+            'model_execution': False,
+            'biological_validation': False,
+        },
         'hedgehog_data': {
             'audit': 'reports/hedgehog-data-audit.json',
             'source_workbook_sha256': hedgehog_audit['workbook']['sha256'],
@@ -150,7 +167,7 @@ def main():
         'html_embedded_report_sha256': embedded_sha,
         'html_embeds_current_report': embedded_sha == hashlib.sha256(report.encode()).hexdigest(),
         'update_policy': 'Written reports only by default; preserve HTML and its embedded report snapshot unless a presentation rebuild is explicitly requested.',
-        'scientific_status': 'Literature and repository review; 15 included fly-brain-feeding software tests previously rerun successfully. Hedgehog source workbook inspected and selected measurements extracted. Separate critic-agent review completed; next milestone narrowed to feasibility and model comparison. Proposed Hedgehog and neuromodulation extensions not implemented or biologically validated. DOOMFLY code and reported failures inspected; simulation not rerun.',
+        'scientific_status': 'Literature and repository review; 15 included fly-brain-feeding software tests previously rerun successfully. Hedgehog source workbook inspected and selected measurements extracted. Original critique followed by three search branches and three dedicated critics reviewing nine alternative assays. Current first recommendation: bounded visual motion-opponency reproduction; neural compass is an alternative and feeding sequencing is conditional. Selected published numerical data inspected, but no alternative model executed, fitted, trained, or biologically validated. Hedgehog and neuromodulation extensions remain unimplemented; DOOMFLY simulation not rerun.',
         'font': {'family': 'Bricolage Grotesque', 'license': 'SIL Open Font License 1.1', 'source': 'https://github.com/google/fonts/tree/main/ofl/bricolagegrotesque'},
     }
     (OUT / 'build-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')

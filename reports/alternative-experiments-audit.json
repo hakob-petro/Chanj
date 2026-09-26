@@ -1,0 +1,427 @@
+{
+  "reviewed_on": "2026-09-26",
+  "purpose": "Evidence-first comparison of alternatives to the Hedgehog and neuromodulation proposals.",
+  "status": "Literature, selected code, and numerical artifact inspection. No model execution, training, fitting, new biological validation, or runtime benchmark.",
+  "report": "reports/alternative-experiment-proposals.md",
+  "original_repository_catalog_unchanged": true,
+  "review_method": {
+    "search_branches": 3,
+    "shortlisted_candidates": 9,
+    "dedicated_critics": 3,
+    "branches": [
+      {
+        "id": "A",
+        "scope": "Adult sensorimotor and feeding assays",
+        "search_agent": "/root/search_circuit_assays",
+        "critic_agent": "/root/critic_circuit_assays",
+        "candidates": [
+          "A1",
+          "A2",
+          "A3"
+        ]
+      },
+      {
+        "id": "B",
+        "scope": "Visual assays",
+        "search_agent": "/root/search_visual_assays",
+        "critic_agent": "/root/critic_visual_assays",
+        "candidates": [
+          "B1",
+          "B2",
+          "B3"
+        ]
+      },
+      {
+        "id": "C",
+        "scope": "Other behavioral and dynamical assays",
+        "search_agent": "/root/search_alternative_assays",
+        "critic_agent": "/root/critic_alternative_assays",
+        "candidates": [
+          "C1",
+          "C2",
+          "C3"
+        ]
+      }
+    ],
+    "selection": [
+      "B1",
+      "C1",
+      "A1"
+    ],
+    "interpretation": "B1 and C1 are ready for bounded reproduction attempts; A1 is conditional for a quantitative intervention experiment. This classification does not establish a working or validated model.",
+    "priorities": [
+      "Compatible inspected evidence",
+      "Fewer untested measurement interfaces",
+      "Reproducibility and implementation burden",
+      "Demonstration clarity"
+    ],
+    "shared_gates": [
+      "Match intervention and observable",
+      "Separate calibration and retrospective evaluation",
+      "Freeze encoders and observation rules",
+      "Compare simpler explanations",
+      "Predeclare error criteria from measurement variability",
+      "Show failures and sampling hierarchy"
+    ],
+    "environment_note": "One search used an isolated temporary NumPy/SciPy/h5py environment for artifact inspection. No simulator or checkpoint was executed. Downloaded research payloads were kept outside the project."
+  },
+  "candidates": [
+    {
+      "id": "B1",
+      "name": "Visual motion opponency",
+      "selected": true,
+      "verdict": "Keep as a bounded reproduction; first recommendation.",
+      "paper": "https://www.nature.com/articles/s41593-023-01443-z",
+      "repository": "https://gin.g-node.org/gammer/Ammer_et_al_2023",
+      "commit": "db1f8089b697d1b19da1394ef94450bbec24f32b",
+      "data_record": "https://doi.gin.g-node.org/10.12751/g-node.7v3pe6/",
+      "artifacts": [
+        {
+          "name": "Figure 2 source data",
+          "url": "https://media.springernature.com/full/springer-static/esm/art%3A10.1038%2Fs41593-023-01443-z/MediaObjects/41593_2023_1443_MOESM6_ESM.zip",
+          "bytes": 753266,
+          "sha256": "28ed23cf99ece131164f5c02138dbf1f6ef1f7352c305819fb689f06236c8ea0",
+          "inspected": true
+        },
+        {
+          "name": "Figure 7 source data",
+          "url": "https://media.springernature.com/full/springer-static/esm/art%3A10.1038%2Fs41593-023-01443-z/MediaObjects/41593_2023_1443_MOESM11_ESM.zip",
+          "bytes": 3273735,
+          "sha256": "78c5bb29f28c06f9962e7e42d376420c983515c6130ecd411f447f629b131d53",
+          "inspected": true
+        }
+      ],
+      "selected_arrays": [
+        {
+          "path": "Figure_7/VS ephys/Voltage analysis/voltage_PM_all_sub.npy",
+          "shape": [
+            795,
+            16,
+            2
+          ],
+          "axes": [
+            "time",
+            "cell",
+            "direction"
+          ],
+          "units": "mV",
+          "sha256": "ba6f99b5496e0b521cfc47aea18d77b45b2698d8a4441be59e7c324e0e3267db"
+        },
+        {
+          "path": "Figure_7/VS ephys/Voltage analysis/voltage_TM_all_sub.npy",
+          "shape": [
+            795,
+            16
+          ],
+          "axes": [
+            "time",
+            "cell"
+          ],
+          "units": "mV"
+        }
+      ],
+      "descriptive_data_only": {
+        "analysis_indices": "Python [300:600]",
+        "local_null_mV": -1.4421,
+        "local_preferred_mV": 2.7574,
+        "local_mixed_mV": 0.7964,
+        "independently_recalculated_by_critic": true
+      },
+      "critic_findings": [
+        "Intervention assay is ArcLight voltage imaging; mixed-motion assay includes electrophysiology. Preserve separate cohorts, signs, units, and normalization.",
+        "The feedback-block notebook defaults to condition=6 (LPi-to-VS removal); condition=3 is feedback block. Pass intervention explicitly.",
+        "Model conductance is arbitrary units with leak=1; experimental plotted nS needs verified conversion. Use fixed dimensionless ratios or independent calibration.",
+        "Conductance arrays have invalid tail samples outside the published analysis interval. Do not zero-fill or silently change windows.",
+        "Outgoing-column deletion models output block; losing the deleted pathway alone is weak evidence. Require spared responses and mixed-motion tests.",
+        "Animal grouping for 16 cells must be recovered before claiming independent-animal uncertainty."
+      ],
+      "code_files": [
+        "Figure_7/Modelling/Modelling_Figure7a_Tuning_curves.ipynb",
+        "Figure_7/Modelling/Modelling_Figure7_VSconductances_feedback_block.ipynb",
+        "Ext_Data_Fig_1/Analysis_SING_R24E09_ArcLight_Ephys.ipynb"
+      ],
+      "novelty_boundary": "Published architecture and parameters were developed with the target observations. Initial work is retrospective reproduction and model comparison."
+    },
+    {
+      "id": "C1",
+      "name": "Neural compass memory",
+      "selected": true,
+      "verdict": "Keep with calibration-only prediction protocol and observation-aware baselines.",
+      "paper": "https://www.nature.com/articles/s41593-024-01766-5",
+      "repository": "https://github.com/HermundstadLab/DiscreteRingAttractor",
+      "commit": "1d9e83af0d71e8ab828563b991655341eea68fc7",
+      "data_record": "https://doi.org/10.25378/janelia.26169355",
+      "artifacts": [
+        {
+          "name": "NoormanEtAlFlyWalkingInDarkness2PBehData.mat",
+          "url": "https://ndownloader.figshare.com/files/47507636",
+          "bytes": 172523406,
+          "sha256": "198faedb3954c41ee88fd2745c5d90e61ed088d12e2a6616ab1ceb05bcc746c3",
+          "md5": "bd38869687de1198d480c14b6b686890",
+          "publisher_md5_matched": true,
+          "inspected": true
+        }
+      ],
+      "schema": {
+        "ROI_Data_Dfof": [
+          32,
+          12000,
+          50
+        ],
+        "FlyRotate_w2p": [
+          50,
+          12000
+        ],
+        "BumpPosition": [
+          50,
+          12000
+        ],
+        "BumpR": [
+          50,
+          12000
+        ],
+        "TwoP_Times": [
+          50,
+          12000
+        ],
+        "sample_rate_Hz": 10,
+        "fly_ids": [
+          377,
+          378,
+          387,
+          388,
+          389,
+          390,
+          391,
+          392,
+          393,
+          394
+        ],
+        "trials_per_fly": 5,
+        "minutes_per_trial": 20,
+        "imaging_bins_are_not_individual_neurons": true
+      },
+      "critic_findings": [
+        "Idealized recurrent ring, not a detailed MaleCNS circuit or autonomous navigation model.",
+        "Published gain fits pool all five trials per fly. Fit only declared calibration trials for new evaluation.",
+        "Plot_Bump_Examples aligns heading using neural phase inside each displayed 40-second window; this leaks target information if copied into prediction.",
+        "The exported aligned-heading construction remains unresolved; use measured angular velocity and one disclosed initial neural phase per test trial.",
+        "Plot helper has an apparent logical-indexing issue; code was inspected, not execution-tested.",
+        "Calcium data are smoothed over 11 frames at 10 Hz. Include an observation-aware null and longer stationary intervals.",
+        "All trials are in darkness. Light-off and optogenetic manipulations require separate matched evidence.",
+        "Compare scalar and leaky integrators, show all animals, and do not treat a retrospective split as a new biological replication."
+      ],
+      "code_files": [
+        "main.m",
+        "auxFunctions/dynSys.m",
+        "auxFunctions/simM.m",
+        "plotVelocityAnalysisFigs.m",
+        "plotDriftAnalysisFigs.m",
+        "auxFunctions/Plot_Bump_Examples.m",
+        "auxFunctions/Combine_Data_Across_Trials.m"
+      ],
+      "unresolved_details": [
+        "GCaMP reporter designation differs between Methods and reporting summary; resolve before quantitative reporter modeling.",
+        "Full fluorescence observation mapping is not independently calibrated."
+      ]
+    },
+    {
+      "id": "A1",
+      "name": "Feeding motor-sequence disinhibition",
+      "selected": true,
+      "verdict": "Conditional: reproduce original outputs first; selective intervention prediction requires a repaired correspondence.",
+      "paper": "https://www.nature.com/articles/s41593-026-02412-y",
+      "published_on": "2026-08-24",
+      "repository": "https://github.com/Junjie-Yi/Motoneurons-generate-motor-sequences-via-a-feedforward-disinhibition-cascade",
+      "commit": "c2f846ffcaf32f5f4ad215262ac877fbb69b5fc0",
+      "artifacts": [
+        {
+          "name": "Figure 2 source data",
+          "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41593-026-02412-y/MediaObjects/41593_2026_2412_MOESM6_ESM.xlsx",
+          "bytes": 21425,
+          "sha256": "57656ccc0735a76ade7e477893a866186cbd7348f20e14f5e76c97997d5a3fdc",
+          "inspected": true
+        },
+        {
+          "name": "Figure 5 source data",
+          "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41593-026-02412-y/MediaObjects/41593_2026_2412_MOESM9_ESM.xlsx",
+          "bytes": 16851,
+          "sha256": "d58ad739fa1b51dc955e631a957ae52b3f3226bdb3d8ac3073a4651e57f1b448",
+          "inspected": true
+        },
+        {
+          "name": "Figure 7 source data",
+          "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41593-026-02412-y/MediaObjects/41593_2026_2412_MOESM11_ESM.xlsx",
+          "bytes": 40641,
+          "sha256": "afc72186fb3cacfd2f9a96460f815a41e2b89b2ac4c72a4e6f079eec054e9752",
+          "inspected": true
+        }
+      ],
+      "descriptive_data_only": {
+        "delay": "MN12D to MN11D first-spike delay",
+        "units": "ms",
+        "biological_before": 68.5767,
+        "biological_during_MN12V_silencing": 53.6843,
+        "paired_flies": 5,
+        "published_simulation_before": 88.5362,
+        "published_simulation_after": 79.7484,
+        "published_simulated_trials_per_condition": 1000,
+        "new_simulations_run": false
+      },
+      "critic_findings": [
+        "Biology selectively silences MN12V; ort conductance applies to all motor layers in inspected LIF_FD_exp.m.",
+        "Supplied model agrees directionally but not quantitatively with the selected delay. Another IN intervention differs even in residual mean ordering sign.",
+        "Figure 7 reuses earlier biological observations; it is not another independent cohort.",
+        "Imposed current pulse is not autonomous feeding rhythm or ingestion.",
+        "Unknown intervention strength must not be tuned against the outcome reserved for evaluation.",
+        "SC and FD implementations use different layer counts; compare calibration freedom fairly.",
+        "Excitatory expression references exclayer(1).V for all layers; needs equation-to-code check, not an established bug."
+      ],
+      "code_files": [
+        "modeling/LIF_FD.m",
+        "modeling/LIF_SC.m",
+        "modeling/LIF_FD_exp.m",
+        "modeling/HH_FD.m",
+        "modeling/fig7fg/fig7fg_exp.m"
+      ],
+      "access_boundary": "Public abstract/figure captions, supplementary tables/reporting information, workbooks and selected code inspected. Full main Methods were inaccessible. Paired intervention delay summaries were acquired; the underlying spike trains for that cohort were not secured.",
+      "compute_boundary": "MATLAB toolbox/parallel-pool dependencies or a verified port needed; no execution benchmark."
+    },
+    {
+      "id": "A2",
+      "name": "Sweet-bitter response selectivity",
+      "selected": false,
+      "verdict": "Conditional existing-substrate alternative; neural response reproduction only.",
+      "paper": "https://elifesciences.org/articles/79887",
+      "repository": "https://github.com/philshiu/Drosophila_brain_model",
+      "commit": "91bdd1e7dcf193f3e7ca5a8933497fcef63b7960",
+      "artifacts": [
+        {
+          "url": "https://cdn.elifesciences.org/articles/79887/elife-79887-fig5-data1-v3.xlsx",
+          "sha256": "bf84dd582638fb5fa2520566b9949c3c66ba5c90ee126d5ba74c15018dc9758d",
+          "inspected": true
+        }
+      ],
+      "critic_findings": [
+        "Workbook says fed; figure caption says food-deprived.",
+        "Unilateral model list of 21 sweet and 21 bitter GRNs needs matching to bilateral genetic driver/illumination coverage.",
+        "Target is synaptic Syt::GCaMP7b, not measured firing rate.",
+        "Weak bitter-only responses may not identify the decisive input strength; coactivation cannot be treated as constrained prediction without addressing this.",
+        "No full feeding probability or hunger-specific claim."
+      ]
+    },
+    {
+      "id": "A3",
+      "name": "JON subtype recruitment of aBN1",
+      "selected": false,
+      "verdict": "Keep as a published-results explainer; defer quantitative validation.",
+      "paper": "https://www.nature.com/articles/s41586-024-07763-9",
+      "repository": "https://github.com/philshiu/Drosophila_brain_model",
+      "commit": "91bdd1e7dcf193f3e7ca5a8933497fcef63b7960",
+      "data_record": "https://edmond.mpdl.mpg.de/dataset.xhtml?persistentId=doi:10.17617/3.CZODIW",
+      "biological_payload_secured": false,
+      "critic_findings": [
+        "Inspected supplementary numerical tables include simulation outputs, not the needed per-fly aBN1 calcium traces.",
+        "Unequal excitation plus threshold is an alternative to inhibition-specific explanation.",
+        "Three-cell disinhibition rescue is biologically untested and was already proposed in 2024.",
+        "Both input populations can evoke grooming; weak aBN1 response is not no grooming."
+      ]
+    },
+    {
+      "id": "B2",
+      "name": "Stationary-pattern motion illusion",
+      "selected": false,
+      "verdict": "Conditional; actual biological data access and readout provenance unresolved.",
+      "paper": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7502748/",
+      "repository": "https://github.com/ClarkLabCode/IllusionPaperCode",
+      "commit": "b928443da53bc5d5b6bd0a7f03ce6d6725873655",
+      "data_record": "https://doi.org/10.5061/dryad.vt4b8gtpd",
+      "biological_payload_secured": false,
+      "access_result": "Manifest inspected; ordinary data requests returned 401/403 during this session, independently checked by critic.",
+      "critic_findings": [
+        "T5 silencing enhances usual turning; T4 silencing reverses it.",
+        "Published compact model threshold was chosen for the illusion; downstream T4/T5 weighting uses observed baseline turning.",
+        "Keep neural signal separate from tethered-walking turning and subjective perception.",
+        "A frozen Flyvis ensemble is a possible later comparator, not a validated movement interface."
+      ]
+    },
+    {
+      "id": "B3",
+      "name": "Reverse-phi voltage benchmark",
+      "selected": false,
+      "verdict": "Defer first implementation; data conversion and fit provenance need work.",
+      "paper": "https://doi.org/10.1016/j.cub.2021.09.072",
+      "data_record": "https://doi.org/10.25378/janelia.c.5629663",
+      "artifacts": [
+        {
+          "record": "https://api.figshare.com/v2/articles/16663486",
+          "name": "modelFigure.zip",
+          "bytes": 3630019,
+          "sha256": "684d2fde778ddef5256f280775064f7c68c1224014a30ba2a01fe7485d72dd10",
+          "inspected": true
+        }
+      ],
+      "biological_payload_secured": false,
+      "critic_findings": [
+        "Ready-made modelFigureCode.m selects row 345 by moving-bar error; cannot call this supplied example a flash-only prediction.",
+        "Paper distinguishes full flash-plus-motion fit from a reduced flash-only fit.",
+        "Biological archives are multi-GB and not parsed; MATLAB table values remain opaque to the inspected SciPy route.",
+        "Behavioral experiment is tethered flying, not walking-ball steering."
+      ]
+    },
+    {
+      "id": "C2",
+      "name": "CxHP8 proprioceptive limit reflex",
+      "selected": false,
+      "verdict": "Defer predictive embodiment; a measured replay and anatomical audit are possible after data access.",
+      "paper": "https://www.nature.com/articles/s41467-026-69333-z",
+      "repository": "https://github.com/Prattbuw/Hair_Plate_Paper",
+      "commit": "d0b1ca45e56477ece6f442fe940d97d6fc1104eb",
+      "data_record": "https://doi.org/10.5061/dryad.fxpnvx153",
+      "biological_payload_secured": false,
+      "access_result": "Dryad manifest and metadata inspected; small-file download also returned 403.",
+      "critic_findings": [
+        "Author code is analysis and signed pathway scoring, not a runnable neural-muscle-body dynamics model.",
+        "Driver labels six of eight front-leg CxHP8 neurons, while anatomical analysis includes all eight.",
+        "Female anatomy and male functional experiments; chronic silencing is not an acute runtime lesion.",
+        "flyid includes trial number; do not count strings as independent animals.",
+        "8.26-Hz calcium interpolated to 300 Hz is not 300-Hz physiological resolution."
+      ]
+    },
+    {
+      "id": "C3",
+      "name": "Odor-on surge and odor-off search",
+      "selected": false,
+      "verdict": "Conditional moving-agent reserve; behavioral rather than neural model.",
+      "paper": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103744/",
+      "repository": "https://github.com/nagellab/AlvarezSalvado_ElementaryTransformations",
+      "commit": "46795a6c5b0228625fbecd1280a43f57ba3f0f39",
+      "data_record": "https://doi.org/10.5061/dryad.g27mq71",
+      "biological_payload_secured": false,
+      "access_result": "Public 6.94-GB behavior ZIP and separate 2.53-GB plume manifest inspected; numerical trials not parsed. Small README request returned 403.",
+      "critic_findings": [
+        "Model equations directly encode speed/turning effects; qualitative animation is not an independent prediction.",
+        "Paper's plume-walk stimulus was excluded from ON/OFF fitting; this is a useful published reproduction target.",
+        "Most experiments use blind norpA36 flies; sighted controls and different plume regimes differ.",
+        "Plume movies and behavior were recorded in separate tunnels; compare distributions, not identical individual paths.",
+        "Wrapper calls an absent customized function; core model is present."
+      ]
+    }
+  ],
+  "optional_model_audit": {
+    "repository": "https://github.com/TuragaLab/flyvis",
+    "commit": "92b3845cc426dd309a1a0e1b3890156c42e14021",
+    "artifact": "results_pretrained_models.zip",
+    "bytes": 3417042,
+    "sha256": "71c78d4070556a536b13b23ee3139cd2788aa2a9d07d430a223b4edead281db1",
+    "model_directories": 50,
+    "download_verified": true,
+    "checkpoints_executed": false,
+    "boundary": "Trained early visual model, not a drop-in LPi/VS circuit. Packaged responses_norm.h5 contains simulated normalization data, not biological recordings. Do not choose a model using the evaluation response."
+  },
+  "preservation": {
+    "html_updated": false,
+    "large_data_committed": false,
+    "model_execution": false
+  }
+}

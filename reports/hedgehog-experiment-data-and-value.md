@@ -4,6 +4,8 @@
 
 ## The initial idea and the experiment it became
 
+**Current priority:** the later [search for alternative experiments](alternative-experiment-proposals.md) recommends a visual neural benchmark first, with compass dynamics and feeding motor sequencing as alternatives. This report preserves the Hedgehog proposal and its unresolved requirements for possible later work; it is no longer the recommended first implementation.
+
 The original idea was to give a connectome-based fly model the biological context that wiring alone cannot provide: sensory organs, muscles, internal physiology, and chemical signals. Actions would change the body and environment, which would then change subsequent neural input. A later ambition was to study interactions between multiple such animals. This remains a research direction, not a completed biological clone.
 
 The proposed first example is smaller: **the same sugar stimulus produces a different feeding response after a different dietary history, mediated in part by a gut signal.** The existing taste-to-mouth loop in fly-brain-feeding is a candidate engineering substrate for a bounded physiological extension. Its moving mouth and contact sensing already exist; our intended contribution is the measured physiological connection and its evaluation.

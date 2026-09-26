@@ -4,11 +4,13 @@
 
 ## The idea and our recommendation
 
+**Current priority:** the subsequent [broader experiment search](alternative-experiment-proposals.md) recommends first reproducing a defined visual-circuit response against actual neural measurements. Chemical modulation remains a possible extension requiring separate evidence. The proposal-specific analysis below is preserved; no neuromodulation model has been implemented or validated.
+
 We can compare the same fly neural model under different modeled chemical states and show the resulting behavior in Doom. This can be a useful computational neuroscience experiment. Its scientific value depends on independently testing the chemical mechanism and the relevant neural responses; a difference in game scores alone establishes an effect in our simulator.
 
 For a visual demonstration, our preferred candidate is **octopamine and visual motion processing**. For a learning experiment, **compartment-specific dopamine modulation** is well motivated, but the existing Doom project already attempts it and reports failed validation. Tyramine deserves a separate, behavior-specific experiment. Cortisol is a poor starting point for this adult fly brain model.
 
-The subsequent [critic review](experiment-critique.md) recommends **deferring dopamine–Doom and assessing octopamine in an established visual model or smaller circuit first**. A fixed game decoder permits a controlled agent comparison but does not make its score a biological endpoint. The immediate project priority is a small Hedgehog feasibility study; the visual route remains an alternative, conditional on working baseline responses and a discriminating biological test.
+The initial [critic review](experiment-critique.md) recommended **deferring dopamine–Doom and assessing octopamine in an established visual model or smaller circuit first**. A fixed game decoder permits a controlled agent comparison but does not make its score a biological endpoint. At that stage the project priority was a small Hedgehog feasibility study; the broader search linked above has since changed the recommended starting point.
 
 This is an alternative to the earlier gut–Hedgehog proposal, not a decision to build both. The feeding prototype remains the more direct engineering starting point for that proposal. No neuromodulation experiment has been implemented or run in this workspace. This follow-up updates written reports only; the HTML presentation remains the earlier snapshot.
 
@@ -179,7 +181,7 @@ The visual-action feedback loop already exists in a game interface. A physiologi
 | Octopamine and vision | How does modulation change motion processing? | Obtain a reliable visual baseline and a bounded modulatory model | Moving scene, neural response, and matched behavioral traces |
 | Dopamine and memory | How do signal timing and location affect learning? | Repair baseline and conditioning failures; separate training from acute effects | Cue learning, retention, and intervention controls |
 
-The revised recommendation is to begin with a small Hedgehog feasibility and model-comparison study before extending the feeding prototype. If rapid visual presentation becomes the priority, assess octopamine against a small biological benchmark on an established visual model. Defer dopamine–Doom until sensory discrimination and conditioning pass reproducibly, including retention, unpaired-exposure, and frozen-plasticity controls. A changed score or changed weights is insufficient. The [critic's decision table](experiment-critique.md#6-smallest-defensible-experiments-and-decision-criteria) specifies when to proceed or narrow each claim. Implementing four interchangeable chemical sliders would obscure their different mechanisms.
+The earlier recommendation was a small Hedgehog feasibility and model-comparison study before extending the feeding prototype. The [broader comparison](alternative-experiment-proposals.md) now recommends a visual neural benchmark first. Octopamine still needs a matched biological modulation assay. Defer dopamine–Doom until sensory discrimination and conditioning pass reproducibly, including retention, unpaired-exposure, and frozen-plasticity controls. A changed score or changed weights is insufficient. The [critic's decision table](experiment-critique.md#6-smallest-defensible-experiments-and-decision-criteria) specifies when to proceed or narrow each chemical-intervention claim. Implementing four interchangeable chemical sliders would obscure their different mechanisms.
 
 ## 9. How we would establish scientific grounding
 

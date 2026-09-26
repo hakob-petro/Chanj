@@ -2,6 +2,8 @@
 
 **Separate critic-agent review and revised project recommendation · 26 September 2026**
 
+**Scope note:** this critique compared the two original proposals. The subsequent [broader search and dedicated reviews](alternative-experiment-proposals.md) supersede its initial project priority with a visual neural benchmark; the objections and conditions below remain relevant to any later Hedgehog or neuromodulation experiment.
+
 The recommendation is to **start with a small Hedgehog feasibility and model-comparison study, assess octopamine only as an alternative visual-circuit experiment, and defer dopamine–Doom**. Neither proposed physiological extension is implemented or biologically validated. This review narrows the next milestone; it does not show that either biological idea is false.
 
 The common risk is circularity: prescribe how a chemical changes neural activity, fit an output rule, observe the expected behavior, and interpret that behavior as evidence for the prescribed mechanism. Prediction on data excluded from fitting is necessary for our proposed validation, but competing models and independently supported measurements are also needed.
