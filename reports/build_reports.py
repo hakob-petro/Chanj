@@ -10,8 +10,10 @@ import json
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'reports'
 ROWS = list(csv.DictReader((ROOT / 'research/awesome-fly-repositories.csv').open()))
+FEEDING_REVIEW = json.loads((ROOT / 'research/fly-brain-feeding-audit.json').read_text())
 CATEGORIES = list(dict.fromkeys(row['category'] for row in ROWS))
 assert len(ROWS) == len({r['repository'] for r in ROWS}) == 96
+assert FEEDING_REVIEW['repository'] not in {r['repository'] for r in ROWS}
 
 def escape(value):
     return html.escape(str(value), quote=True)
@@ -78,15 +80,24 @@ def main():
     target = OUT / 'fly-project-brief.html'
     target.write_text(source)
     manifest = {
-        'review_date': '2026-09-25',
+        'review_date': FEEDING_REVIEW['reviewed_on'],
+        'collection_review_date': '2026-09-25',
         'compiled_on': '2026-09-26',
-        'repositories': len(ROWS),
+        'repositories': len(ROWS) + 1,
+        'catalog_repositories': len(ROWS),
+        'additional_repository_reviews': [{
+            'repository': FEEDING_REVIEW['repository'],
+            'commit': FEEDING_REVIEW['commit'],
+            'reviewed_on': FEEDING_REVIEW['reviewed_on'],
+            'tests_passed': FEEDING_REVIEW['local_verification']['passed'],
+            'audit': 'research/fly-brain-feeding-audit.json',
+        }],
         'category_counts': dict(Counter(r['category'] for r in ROWS)),
         'report_words': len(report.split()),
         'report_sha256': hashlib.sha256(report.encode()).hexdigest(),
         'html_bytes': target.stat().st_size,
         'html_sha256': hashlib.sha256(source.encode()).hexdigest(),
-        'scientific_status': 'Literature and repository review; proposed experiment; no simulation executed.',
+        'scientific_status': 'Literature and repository review; 15 included fly-brain-feeding software tests rerun successfully. Proposed Hedgehog extension not implemented or biologically validated.',
         'font': {'family': 'Bricolage Grotesque', 'license': 'SIL Open Font License 1.1', 'source': 'https://github.com/google/fonts/tree/main/ofl/bricolagegrotesque'},
     }
     (OUT / 'build-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')

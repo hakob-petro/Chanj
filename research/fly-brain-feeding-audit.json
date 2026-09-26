@@ -1,0 +1,123 @@
+{
+  "reviewed_on": "2026-09-26",
+  "repository": "dicnunz/fly-brain-feeding",
+  "url": "https://github.com/dicnunz/fly-brain-feeding",
+  "commit": "86c7d84fccb1269842c8520846fc006a79fb3487",
+  "commit_date": "2026-09-12T12:13:21-04:00",
+  "relationship_to_original_inventory": "Additional focused review; not included in the original 96-entry Awesome Fly CSV.",
+  "scope": "Read selected source and documentation and ran the repository's included Node test suite. This verifies tested software behavior; it is not new biological validation.",
+  "inspected_files": [
+    {
+      "path": "README.md",
+      "url": "https://github.com/dicnunz/fly-brain-feeding/blob/86c7d84fccb1269842c8520846fc006a79fb3487/README.md",
+      "sha256": "3419a6c9b126c5fdcbcf0e2c8042f136ea76fb418f499a30c8783d3d7b7b2f51"
+    },
+    {
+      "path": "model.js",
+      "url": "https://github.com/dicnunz/fly-brain-feeding/blob/86c7d84fccb1269842c8520846fc006a79fb3487/model.js",
+      "sha256": "0fec60d2b2dfab4b9cfa02898df9b26e1ce6302e7ed6047f67adb8c0640495c4"
+    },
+    {
+      "path": "body.js",
+      "url": "https://github.com/dicnunz/fly-brain-feeding/blob/86c7d84fccb1269842c8520846fc006a79fb3487/body.js",
+      "sha256": "458584ce9bdb6522916c434741cc6516e9aca1b876e6c121b305e8274d9b4ae0"
+    },
+    {
+      "path": "app.js",
+      "url": "https://github.com/dicnunz/fly-brain-feeding/blob/86c7d84fccb1269842c8520846fc006a79fb3487/app.js",
+      "sha256": "a4438ff255784eb229a32c38758caf3e7991e76af8bb0cc4a948d3c2dfbcdabb"
+    },
+    {
+      "path": "tools/prepare_data.py",
+      "url": "https://github.com/dicnunz/fly-brain-feeding/blob/86c7d84fccb1269842c8520846fc006a79fb3487/tools/prepare_data.py",
+      "sha256": "ee593cbee832b914e421ae1356f7f43d1d17b6156b0141987ff65500ce351c91"
+    },
+    {
+      "path": "data/metadata.json",
+      "url": "https://github.com/dicnunz/fly-brain-feeding/blob/86c7d84fccb1269842c8520846fc006a79fb3487/data/metadata.json",
+      "sha256": "fcf15a266e9d4fcd18f6fae3afd8b43d4ae18272941e3ee60730b36a91ff7932"
+    },
+    {
+      "path": "docs/model-evidence.md",
+      "url": "https://github.com/dicnunz/fly-brain-feeding/blob/86c7d84fccb1269842c8520846fc006a79fb3487/docs/model-evidence.md",
+      "sha256": "9ece873026b9bc0c818adfb1ed199c6edb664f149eee7cf2645ef406339cf7df"
+    },
+    {
+      "path": "docs/validation.md",
+      "url": "https://github.com/dicnunz/fly-brain-feeding/blob/86c7d84fccb1269842c8520846fc006a79fb3487/docs/validation.md",
+      "sha256": "9f3f91cdf182242c036b25be3d80076b03a8687d4a5812ede550af77a4159cef"
+    },
+    {
+      "path": "tests/body.test.cjs",
+      "url": "https://github.com/dicnunz/fly-brain-feeding/blob/86c7d84fccb1269842c8520846fc006a79fb3487/tests/body.test.cjs",
+      "sha256": "01ec5c4d80479e777b1673e1e966acca619a2d40faa0150d559c39adaca75fb4"
+    },
+    {
+      "path": "tests/model.test.cjs",
+      "url": "https://github.com/dicnunz/fly-brain-feeding/blob/86c7d84fccb1269842c8520846fc006a79fb3487/tests/model.test.cjs",
+      "sha256": "b338e2a723ee6e2fec8ac7f23bc7ce5731fa29e5a658bb9dc017b2399c52ed16"
+    }
+  ],
+  "model": {
+    "source": "Shiu et al., 2024",
+    "specimen": "female FlyWire",
+    "materialization": 630,
+    "neurons": 127400,
+    "directed_neuron_pair_connections": 14687178,
+    "anatomical_synaptic_contacts": 52793639,
+    "packed_payload_sha256": "d369e346db7ab655be4edbb3abeb8cf9473f622a6f83b6e4dc1bab922990c9c3",
+    "upstream_commit": "91bdd1e7dcf193f3e7ca5a8933497fcef63b7960",
+    "sweet_neurons": 21,
+    "bitter_neurons": 21,
+    "mn9_neurons": 2,
+    "contact_stimulus_hz": 200,
+    "learned_motor_controller": false
+  },
+  "local_verification": {
+    "command": "node --test tests/*.test.cjs",
+    "node_version": "v26.7.0",
+    "exit_code": 0,
+    "tests": 15,
+    "passed": 15,
+    "failed": 0,
+    "skipped": 0,
+    "sustained_contact_comparison": {
+      "seed": 123,
+      "simulated_ms": 3000,
+      "sugar": {
+        "mn9_spikes": 466,
+        "mean_normalized_extension": 0.8504461487158552
+      },
+      "sugar_and_bitter": {
+        "mn9_spikes": 52,
+        "mean_normalized_extension": 0.0982536872408218
+      }
+    },
+    "stationary_boundary_drop": {
+      "seed": 123,
+      "simulated_ms": 3000,
+      "contact_transitions": 13,
+      "contact_fraction": 0.23933333333333334,
+      "mean_normalized_extension": 0.22534758993209814
+    },
+    "interventions": [
+      "MN9 clamping prevents extension while upstream taste remains active.",
+      "Blocking sensory input allows the body to retract after transient neural activity decays."
+    ],
+    "interpretation": "Outputs reproduced by running supplied tests; numbers are simulated outputs, not measurements from animals. No original benchmark or browser-performance claim is inferred from this run."
+  },
+  "not_independently_reproduced": [
+    "Repacking and comparing every edge against the original Shiu source files.",
+    "A full-network Brian2 equivalence comparison.",
+    "The authors' browser-performance measurements.",
+    "Quantitative validation of contact encoding or body motion against animals.",
+    "Any Hedgehog, ingestion, or dietary-history experiment."
+  ],
+  "missing_for_our_proposal": [
+    "Concentration-dependent sensory encoding.",
+    "Dietary history and gut-derived Hedgehog state.",
+    "Validation on held-out biological measurements and interventions.",
+    "An explicit ingestion model and slow gut dynamics for a later physiological loop."
+  ],
+  "project_implication": "Recommended engineering starting point for taste-to-mouth control. Proposed contribution is calibrated physiological feedback and biological evaluation. Female-to-male transfer must be justified for the selected male Hedgehog benchmark."
+}

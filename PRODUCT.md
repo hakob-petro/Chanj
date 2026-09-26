@@ -16,15 +16,15 @@ The project team and the user's teammates. Confirmed audience: mixed technical, 
 
 ## Product Purpose
 
-Preserve the session's research on fly connectomics and 96 repositories, and explain a proposed taste–gut-feedback experiment that could ground a hackathon project.
+Preserve the session's research on fly connectomics, the original 96-repository collection, and the additional fly-brain-feeding review. Explain how the existing taste-to-mouth simulation could support a proposed taste–gut-feedback experiment.
 
 ## Capabilities and Constraints
 
-The HTML must be readable offline, responsive, printable, and shareable as one file. Distinguish anatomical measurements, published biological findings, repository authors' reports, and our proposed experiments. No fly simulation or biological replication was performed in this session. Do not invent quantitative results or novelty claims.
+The HTML must be readable offline, responsive, printable, and shareable as one file. Distinguish anatomical measurements, published biological findings, repository authors' reports, locally reproduced software-test outputs, and our proposed experiments. The 15 included fly-brain-feeding tests passed during the focused review; our physiological extension has not been implemented or biologically validated. Do not invent quantitative results or novelty claims.
 
 ## Evidence on Hand
 
-research/fruit-fly-brain-analysis.md; research/awesome-fly-repository-review.md; research/awesome-fly-repositories.csv; research/source-audit.json; research/awesome-fly-review-sources.json. The conversation adds primary papers on gut-derived Hedgehog, feeding circuitry, dopamine modulation, and social isolation.
+research/fruit-fly-brain-analysis.md; research/awesome-fly-repository-review.md; research/awesome-fly-repositories.csv; research/source-audit.json; research/awesome-fly-review-sources.json; research/fly-brain-feeding-audit.json. The conversation adds primary papers on gut-derived Hedgehog, feeding circuitry, dopamine modulation, and social isolation.
 
 ## Product Principles
 

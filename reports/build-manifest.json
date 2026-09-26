@@ -1,7 +1,18 @@
 {
-  "review_date": "2026-09-25",
+  "review_date": "2026-09-26",
+  "collection_review_date": "2026-09-25",
   "compiled_on": "2026-09-26",
-  "repositories": 96,
+  "repositories": 97,
+  "catalog_repositories": 96,
+  "additional_repository_reviews": [
+    {
+      "repository": "dicnunz/fly-brain-feeding",
+      "commit": "86c7d84fccb1269842c8520846fc006a79fb3487",
+      "reviewed_on": "2026-09-26",
+      "tests_passed": 15,
+      "audit": "research/fly-brain-feeding-audit.json"
+    }
+  ],
   "category_counts": {
     "Starter template": 1,
     "Games and control experiments": 20,
@@ -13,11 +24,11 @@
     "Tutorials": 3,
     "Related resource lists": 2
   },
-  "report_words": 12718,
-  "report_sha256": "883414a9dbc377e036fc669b5d04307941862c11891f2e01815af8cd9c36ace7",
-  "html_bytes": 489684,
-  "html_sha256": "f1a6ae78f52c68ba65e59fc931b5d5e80d736feae43fbc1611b7b8b72816a064",
-  "scientific_status": "Literature and repository review; proposed experiment; no simulation executed.",
+  "report_words": 13796,
+  "report_sha256": "78e3c252def3cbd3207fd04601c8f3ccdaedbe5e0800c1e266c26a90100aa7f0",
+  "html_bytes": 508875,
+  "html_sha256": "d7692067ca2262a2558aa4c67266d57ec72d1bf11c873ed6ff34820778877e04",
+  "scientific_status": "Literature and repository review; 15 included fly-brain-feeding software tests rerun successfully. Proposed Hedgehog extension not implemented or biologically validated.",
   "font": {
     "family": "Bricolage Grotesque",
     "license": "SIL Open Font License 1.1",
