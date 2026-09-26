@@ -1,11 +1,13 @@
-"""Build the two self-contained session deliverables from reviewed source material."""
+"""Build written reports; rebuild the HTML snapshot only with --with-html."""
 from pathlib import Path
 from collections import Counter
+import argparse
 import base64
 import csv
 import html
 import hashlib
 import json
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'reports'
@@ -59,8 +61,7 @@ def build_catalog():
 </dl></div></details>''')
     return '\n'.join(entries)
 
-def main():
-    report = build_markdown()
+def build_html(report):
     font_path = OUT / 'assets/heading.ttf'
     if not font_path.exists():
         raise SystemExit('Missing reports/assets/heading.ttf. Restore the licensed font asset before building.')
@@ -79,6 +80,25 @@ def main():
     assert not any(token in source for token in tokens)
     target = OUT / 'fly-project-brief.html'
     target.write_text(source)
+    return source
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--with-html', action='store_true',
+                        help='Also rebuild the HTML presentation, only when explicitly requested.')
+    args = parser.parse_args()
+    report = build_markdown()
+    target = OUT / 'fly-project-brief.html'
+    if args.with_html:
+        build_html(report)
+    html_bytes = target.read_bytes() if target.exists() else None
+    embedded = re.search(rb'<script id="report-data"[^>]*>([^<]+)</script>', html_bytes) if html_bytes else None
+    embedded_sha = hashlib.sha256(base64.b64decode(embedded.group(1))).hexdigest() if embedded else None
+    neuromodulation_review = json.loads((OUT / 'neuromodulation-source-audit.json').read_text())
+    neuromodulation_report = (OUT / 'neuromodulation-doom-experiment.md').read_bytes()
+    hedgehog_report = (OUT / 'hedgehog-experiment-data-and-value.md').read_bytes()
+    critique_report = (OUT / 'experiment-critique.md').read_bytes()
+    hedgehog_audit = json.loads((OUT / 'hedgehog-data-audit.json').read_text())
     manifest = {
         'review_date': FEEDING_REVIEW['reviewed_on'],
         'collection_review_date': '2026-09-25',
@@ -92,12 +112,45 @@ def main():
             'tests_passed': FEEDING_REVIEW['local_verification']['passed'],
             'audit': 'research/fly-brain-feeding-audit.json',
         }],
+        'focused_repository_reinspections': [{
+            'repository': neuromodulation_review['repository'],
+            'commit': neuromodulation_review['commit'],
+            'reviewed_on': neuromodulation_review['reviewed_on'],
+            'audit': 'reports/neuromodulation-source-audit.json',
+            'simulation_rerun': False,
+        }],
         'category_counts': dict(Counter(r['category'] for r in ROWS)),
         'report_words': len(report.split()),
         'report_sha256': hashlib.sha256(report.encode()).hexdigest(),
-        'html_bytes': target.stat().st_size,
-        'html_sha256': hashlib.sha256(source.encode()).hexdigest(),
-        'scientific_status': 'Literature and repository review; 15 included fly-brain-feeding software tests rerun successfully. Proposed Hedgehog extension not implemented or biologically validated.',
+        'neuromodulation_report': {
+            'path': 'reports/neuromodulation-doom-experiment.md',
+            'words': len(neuromodulation_report.decode().split()),
+            'sha256': hashlib.sha256(neuromodulation_report).hexdigest(),
+        },
+        'hedgehog_report': {
+            'path': 'reports/hedgehog-experiment-data-and-value.md',
+            'words': len(hedgehog_report.decode().split()),
+            'sha256': hashlib.sha256(hedgehog_report).hexdigest(),
+        },
+        'critique_report': {
+            'path': 'reports/experiment-critique.md',
+            'words': len(critique_report.decode().split()),
+            'sha256': hashlib.sha256(critique_report).hexdigest(),
+            'review_type': 'Separate critic-agent literature and selected code review',
+            'simulation_rerun': False,
+        },
+        'hedgehog_data': {
+            'audit': 'reports/hedgehog-data-audit.json',
+            'source_workbook_sha256': hedgehog_audit['workbook']['sha256'],
+            'exports': hedgehog_audit['exports'],
+            'status': 'Selected published measurements extracted; no physiological model fitted or biologically validated.',
+        },
+        'html_bytes': len(html_bytes) if html_bytes is not None else None,
+        'html_sha256': hashlib.sha256(html_bytes).hexdigest() if html_bytes is not None else None,
+        'html_embedded_report_sha256': embedded_sha,
+        'html_embeds_current_report': embedded_sha == hashlib.sha256(report.encode()).hexdigest(),
+        'update_policy': 'Written reports only by default; preserve HTML and its embedded report snapshot unless a presentation rebuild is explicitly requested.',
+        'scientific_status': 'Literature and repository review; 15 included fly-brain-feeding software tests previously rerun successfully. Hedgehog source workbook inspected and selected measurements extracted. Separate critic-agent review completed; next milestone narrowed to feasibility and model comparison. Proposed Hedgehog and neuromodulation extensions not implemented or biologically validated. DOOMFLY code and reported failures inspected; simulation not rerun.',
         'font': {'family': 'Bricolage Grotesque', 'license': 'SIL Open Font License 1.1', 'source': 'https://github.com/google/fonts/tree/main/ofl/bricolagegrotesque'},
     }
     (OUT / 'build-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')

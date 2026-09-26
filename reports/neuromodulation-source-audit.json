@@ -1,0 +1,151 @@
+{
+  "reviewed_on": "2026-09-26",
+  "repository": "nftechie/doomfly",
+  "url": "https://github.com/nftechie/doomfly",
+  "commit": "71ecf53d78eaffaf1a57ed7b0ccf5d458abc9f33",
+  "scope": "Focused reinspection of an already catalogued repository and primary-literature assessment of a proposed neuromodulation experiment.",
+  "distinct_repository_count_after_review": 97,
+  "inspection_method": "Shallow sparse checkout; selected documentation and code read, with current training protocol distinguished from historical baseline reviews.",
+  "inspected_files": [
+    {
+      "path": "README.md",
+      "sha256": "7d34f12bf929161aed55b95c3e6708e6509d614802868a25ec37f2067595cb10",
+      "url": "https://github.com/nftechie/doomfly/blob/71ecf53d78eaffaf1a57ed7b0ccf5d458abc9f33/README.md",
+      "inspection_focus": "Current model status and distinction between fixed baseline and experimental v6."
+    },
+    {
+      "path": "docs/doom-live-training.md",
+      "sha256": "473b09f1db8cd8299d4229ae439a878e9818bd564dcb125d8e9624d6e53abaa0",
+      "url": "https://github.com/nftechie/doomfly/blob/71ecf53d78eaffaf1a57ed7b0ccf5d458abc9f33/docs/doom-live-training.md",
+      "inspection_focus": "Current stimulation protocol, memory targets, state persistence, and scientific limitations."
+    },
+    {
+      "path": "docs/doom-learning-iteration-log.md",
+      "sha256": "88556e1de626e07180ce7a30431dc7b1587fc3a97a834f3fe624a33cec34bd5a",
+      "url": "https://github.com/nftechie/doomfly/blob/71ecf53d78eaffaf1a57ed7b0ccf5d458abc9f33/docs/doom-learning-iteration-log.md",
+      "inspection_focus": "Selected candidate v2-v6 assumptions and failed visual and conditioning results."
+    },
+    {
+      "path": "doom_learning_v6/brain.py",
+      "sha256": "0c6ef6e3f80edd076c05cfaaea0e14d36b0e439c597f9456b00387062484593f",
+      "url": "https://github.com/nftechie/doomfly/blob/71ecf53d78eaffaf1a57ed7b0ccf5d458abc9f33/doom_learning_v6/brain.py",
+      "inspection_focus": "Modulatory-cell mask, external stimulation, rate-driven plasticity, and state reset."
+    },
+    {
+      "path": "doom_learning_v6/rule.py",
+      "sha256": "0df2ae1bf10b97a213064b3ac3934227539d08e51521a99cdb56fe7f5b44b725",
+      "url": "https://github.com/nftechie/doomfly/blob/71ecf53d78eaffaf1a57ed7b0ccf5d458abc9f33/doom_learning_v6/rule.py",
+      "inspection_focus": "Selected rate-rule implementation, declared provenance, and parameter assumptions."
+    },
+    {
+      "path": "doom_learning_v6/kernel.cpp",
+      "sha256": "e2d4d584f4633613277bb1bf6ea7ba20855c01a332ae2e9344ed7782604c8509",
+      "url": "https://github.com/nftechie/doomfly/blob/71ecf53d78eaffaf1a57ed7b0ccf5d458abc9f33/doom_learning_v6/kernel.cpp",
+      "inspection_focus": "Modulatory delivery trace and absence of a generic receptor-specific target response."
+    }
+  ],
+  "primary_sources": [
+    {
+      "id": "hige2015",
+      "title": "Heterosynaptic Plasticity Underlies Aversive Olfactory Learning in Drosophila",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26637800/",
+      "doi": "10.1016/j.neuron.2015.11.003",
+      "access": "Primary abstract and indexed article excerpts",
+      "relevance": "Temporal order and compartment specificity of dopamine-dependent plasticity"
+    },
+    {
+      "id": "vogt2014",
+      "title": "Shared mushroom body circuits underlie visual and olfactory memories in Drosophila",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4135349/",
+      "doi": "10.7554/eLife.02395",
+      "access": "Primary full text; selected sections inspected",
+      "relevance": "Direct visual associative-learning benchmark; assay-dependent circuit requirements",
+      "full_text_retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4135349/fullTextXML",
+      "retrieved_xml_sha256": "1c86563b4cf5a56e34245e865e4245a761d457a0a83b3084cce2d1f1c36b5dfb"
+    },
+    {
+      "id": "huang_luo2024",
+      "title": "Dopamine-mediated interactions between short- and long-term memory dynamics",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11525173/",
+      "doi": "10.1038/s41586-024-07819-w",
+      "access": "Primary abstract and indexed article excerpts; not independently reproduced",
+      "relevance": "Published model adapted by DOOMFLY"
+    },
+    {
+      "id": "huang_data2024",
+      "title": "Data for Huang, Luo, et al., Dopamine-mediated interactions between short- and long-term memory dynamics",
+      "url": "https://zenodo.org/doi/10.5281/zenodo.10998456",
+      "doi": "10.5281/zenodo.10998456",
+      "access": "Dataset landing page and file listing; data archives not downloaded or fitted",
+      "relevance": "Potential quantitative calibration data"
+    },
+    {
+      "id": "suver2012",
+      "title": "Octopamine neurons mediate flight-induced modulation of visual processing in Drosophila",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23142045/",
+      "doi": "10.1016/j.cub.2012.10.034",
+      "access": "Primary abstract",
+      "relevance": "Octopamine application and causal manipulation of state-dependent visual responses"
+    },
+    {
+      "id": "strother2018",
+      "title": "Behavioral state modulates the ON visual motion pathway of Drosophila",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5776785/",
+      "doi": "10.1073/pnas.1703090115",
+      "access": "Primary full text; results, pharmacological conditions, and main-text methods inspected",
+      "relevance": "Mi4/ON-motion effects, agonist distinction, and female walking assay",
+      "full_text_retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5776785/fullTextXML",
+      "retrieved_xml_sha256": "b45a56e70b6070d197adb87d1c678209fbdebf0c50390aff62d736d6a05903f1"
+    },
+    {
+      "id": "tyramine_larvae2019",
+      "title": "Tyramine action on motoneuron excitability and adaptable tyramine/octopamine ratios adjust Drosophila locomotion to nutritional state",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6397572/",
+      "access": "Primary abstract and indexed article excerpts",
+      "relevance": "Mechanistic motor effect with larval developmental-stage boundary"
+    },
+    {
+      "id": "hardie2007",
+      "title": "Trace amines differentially regulate adult locomotor activity, cocaine sensitivity, and female fertility in Drosophila melanogaster",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17638385/",
+      "doi": "10.1002/dneu.20459",
+      "access": "Primary abstract",
+      "relevance": "Adult phenotypes do not support a universal octopamine/tyramine opposition"
+    },
+    {
+      "id": "cheriyamkunnel2021",
+      "title": "A neuronal mechanism controlling the choice between feeding and sexual behaviors in Drosophila",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8538064/",
+      "doi": "10.1016/j.cub.2021.07.029",
+      "access": "Primary summary and selected indexed results",
+      "relevance": "Adult male tyramine and internal-state-dependent behavioral choice"
+    },
+    {
+      "id": "bartolo2020",
+      "title": "Identification of glucocorticoid receptor in Drosophila melanogaster",
+      "url": "https://link.springer.com/article/10.1186/s12866-020-01848-x",
+      "doi": "10.1186/s12866-020-01848-x",
+      "access": "Primary full text; experiments, discussion, and methods inspected",
+      "relevance": "Cortisone acetate and dmERR immune phenotype; no direct binding or neural cortisol mechanism established",
+      "full_text_retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7296755/fullTextXML",
+      "retrieved_xml_sha256": "5f5efc15ebfbd511ceeac89cdec6b502d975a836942e290284445d8abcf3ae5f"
+    }
+  ],
+  "verification": {
+    "doom_simulation_rerun": false,
+    "doom_tests_rerun": false,
+    "connectome_data_downloaded_for_this_followup": false,
+    "published_failures": "Authors reports cross-checked against documentation and relevant code; not independently reproduced.",
+    "biological_calibration_performed": false,
+    "new_experiment_implemented": false,
+    "html_and_template_changed": false
+  },
+  "boundaries": [
+    "Dopamine-neuron stimulation is not a calibrated extracellular chemical exposure.",
+    "The experimental v6 pathway differs from the fixed default baseline.",
+    "Generic modulatory delivery traces do not implement target-specific octopamine or serotonin physiology.",
+    "Primary papers support specific assays; predictions about Doom performance remain hypotheses.",
+    "The literature search is focused rather than systematic or exhaustive.",
+    "Existing feeding-repository software tests do not validate this proposal."
+  ]
+}

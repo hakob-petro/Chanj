@@ -1,0 +1,18 @@
+panel,sheet,cell,condition,relative_Hh_protein
+4d,Fig 4,B77,w1118; 6% diet,0.69992144
+4d,Fig 4,C77,w1118; 6% diet,1.34149602
+4d,Fig 4,D77,w1118; 6% diet,1.10049073
+4d,Fig 4,E77,w1118; 6% diet,0.81854882
+4d,Fig 4,B78,w1118; 34% diet,1.67940561
+4d,Fig 4,C78,w1118; 34% diet,1.8984582
+4d,Fig 4,D78,w1118; 34% diet,1.88204127
+4d,Fig 4,E78,w1118; 34% diet,2.11961957
+4f,Fig 4,B109,Mex-Gal4/+; 34% diet,1.14815826
+4f,Fig 4,C109,Mex-Gal4/+; 34% diet,0.97073716
+4f,Fig 4,D109,Mex-Gal4/+; 34% diet,0.88110458
+4f,Fig 4,B110,Mex-Gal4/Hh-IR; 34% diet,0.20529112
+4f,Fig 4,C110,Mex-Gal4/Hh-IR; 34% diet,0.15713896
+4f,Fig 4,D110,Mex-Gal4/Hh-IR; 34% diet,0.14371124
+4f,Fig 4,B111,Mex-Gal4/; disp-IR/+; 34% diet,0.25417549
+4f,Fig 4,C111,Mex-Gal4/; disp-IR/+; 34% diet,0.34704308
+4f,Fig 4,D111,Mex-Gal4/; disp-IR/+; 34% diet,0.3006067

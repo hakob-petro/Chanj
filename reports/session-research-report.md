@@ -1,12 +1,14 @@
 # From a fly connectome to a physiological experiment
 
-**Comprehensive session report · Collection reviewed 25 September 2026 · Feeding-repository follow-up and compilation 26 September 2026 · Firebird project exploration**
+**Comprehensive session report · Collection reviewed 25 September 2026 · Feeding, neuromodulation, and critic follow-ups 26 September 2026 · Firebird project exploration**
 
-This report brings together our analysis of Google's fly-connectome announcement, the complete review of repositories linked from Awesome Fly, and the discussion of an embodied fly model with physiological feedback. A subsequent focused review of dicnunz/fly-brain-feeding identifies an existing implementation of the taste-to-mouth feedback loop. The report includes a concrete proposed experiment and a path toward social simulations.
+This report brings together our analysis of Google's fly-connectome announcement, the complete review of repositories linked from Awesome Fly, and the discussion of an embodied fly model with physiological feedback. Subsequent focused reviews identify an existing taste-to-mouth implementation in dicnunz/fly-brain-feeding, assess chemical modulation of the DOOMFLY model, and inspect the actual Hedgehog source-data workbook. The report includes proposed experiments and a path toward social simulations. A [focused project-and-data report](hedgehog-experiment-data-and-value.md) connects the original idea, validation criteria, available measurements, and practical value.
 
-The central recommendation is to build on the existing **taste-to-mouth simulation in fly-brain-feeding**, adding a calibrated model of **dietary history and gut-derived Hedgehog feedback**. Validate the extension against published measurements and interventions before expanding to locomotion, vision, or groups of interacting flies. We ran the repository's 15 included software tests successfully. Our proposed physiological extension has not been implemented or biologically validated.
+The revised central recommendation is a **small Hedgehog feasibility and model-comparison study before extending embodiment**. Select compatible measurements, compare a history-dependent sensory model with a simpler explanation, and establish whether the existing **taste-to-mouth simulation in fly-brain-feeding** can support a separately justified downstream prediction. Its 15 included software tests passed, but the physiological extension is unimplemented and has no biological validation. A separate [critic review](experiment-critique.md) identifies why developmental history, uncertain sensory timing, and the mouth-motion readout must be resolved before claiming a quantitative feeding model or an intake-driven endocrine cycle.
 
-**Navigate:** [Key learnings](#1-what-we-learned) · [Evidence scope](#2-scope-evidence-and-provenance) · [Google's release](#3-what-google-and-its-collaborators-actually-released) · [Modeling and compute](#4-anatomy-executable-dynamics-and-an-embodied-fly) · [Community lessons](#5-what-people-have-already-tried) · [Existing feeding prototype](#a-directly-reusable-baseline-fly-brain-feeding) · [Proposed experiment](#6-the-proposed-experiment-dietary-history-changes-sugar-response) · [Validation](#7-what-would-count-as-a-meaningful-result) · [Social extension](#8-extending-toward-interacting-flies) · [Project sequence](#9-a-practical-sequence-for-the-project) · [Open questions](#10-open-questions-and-risks) · [Glossary](#11-terms-used-in-the-reports) · [Original 96 repositories](#appendix-complete-inventory-of-96-reviewed-repositories)
+An alternative focused on rapid visual behavior would assess **octopamine and motion processing in an established visual model or smaller circuit**, with Doom as a later exploratory environment. Defer dopamine–Doom until sensory discrimination and conditioning pass reproducibly; the existing repository already attempts dopamine-dependent learning and reports failed validation. These alternatives are assessed in [Section 12](#12-alternative-experiment-neuromodulation-and-doom), the [dedicated report](neuromodulation-doom-experiment.md), and the [critic's decision criteria](#13-critical-review-and-revised-priorities). No pivot or additional implementation is assumed.
+
+**Navigate:** [Key learnings](#1-what-we-learned) · [Evidence scope](#2-scope-evidence-and-provenance) · [Google's release](#3-what-google-and-its-collaborators-actually-released) · [Modeling and compute](#4-anatomy-executable-dynamics-and-an-embodied-fly) · [Community lessons](#5-what-people-have-already-tried) · [Existing feeding prototype](#a-directly-reusable-baseline-fly-brain-feeding) · [Proposed experiment](#6-the-proposed-experiment-dietary-history-changes-sugar-response) · [Validation](#7-what-would-count-as-a-meaningful-result) · [Social extension](#8-extending-toward-interacting-flies) · [Project sequence](#9-a-practical-sequence-for-the-project) · [Open questions](#10-open-questions-and-risks) · [Glossary](#11-terms-used-in-the-reports) · [Neuromodulation and Doom](#12-alternative-experiment-neuromodulation-and-doom) · [Critique and priorities](#13-critical-review-and-revised-priorities) · [Original 96 repositories](#appendix-complete-inventory-of-96-reviewed-repositories)
 
 ## 1. What we learned
 
@@ -17,12 +19,15 @@ The central recommendation is to build on the existing **taste-to-mouth simulati
 5. **A specific experimental target already exists.** Published work connects dietary sugar, gut-derived Hedgehog signaling, sweet-sensory responses, and feeding initiation in adult male flies. This is much narrower than recreating an entire endocrine system.
 6. **A close implementation of the initial prototype already exists.** The additional fly-brain-feeding review found contact-driven sugar sensing, a fixed Shiu neural model, and MN9-driven mouth movement that changes subsequent contact. Ingestion, gut state, and Hedgehog signaling are absent. Our proposed contribution is the physiological extension and its biological evaluation.
 7. **Social experiments are a later stage.** Fly-specific studies of social isolation offer a better validation target than transferring rodent population-collapse stories directly to flies. Multiple simulated animals do not automatically supply social or reproductive biology.
+8. **Chemical modulation needs a specified mechanism.** Neural stimulation, chemical exposure, and arbitrary gain changes are different experiments. A game-performance difference alone cannot validate the mechanism or demonstrate learning. The neuromodulation follow-up separates those questions and proposes independent biological benchmarks.
+9. **Real Hedgehog data are available, but their layers need alignment.** We inspected the ten-sheet source workbook and extracted selected protein, sensory, and behavioral measurements. Tastants, ages, units, genetic controls, and replicate structure differ across assays. Resolving those differences is part of building a defensible experiment.
+10. **The critique narrows the immediate milestone.** Compare plausible explanations before adding embodiment. A fitted sensory encoder and motor readout could determine the apparent effect, leaving the connectome with little explanatory role. A game-score difference also remains dependent on its engineered action mapping.
 
 The detailed evidence and boundaries for these conclusions follow. The appendix preserves the original 96-repository inventory; the additional feeding-repository review appears in Section 5.
 
 ## 2. Scope, evidence, and provenance
 
-The session began with three research stages: understanding the connectome release; surveying the complete Awesome Fly collection; and assessing the user's proposed body–brain and multi-fly experiments. A September 26 follow-up inspected and tested fly-brain-feeding, which was not in the original 96-entry inventory. The HTML companion is a shorter, shareable explanation for a mixed technical audience.
+The session began with three research stages: understanding the connectome release; surveying the complete Awesome Fly collection; and assessing the user's proposed body–brain and multi-fly experiments. September 26 follow-ups inspected and tested fly-brain-feeding, then researched neuromodulation and reinspected DOOMFLY. The HTML companion is a shorter explanation for a mixed technical audience, preserved at the feeding-review snapshot. At the user's request, subsequent updates affect written reports only; its embedded Markdown download therefore also remains the earlier version.
 
 | Evidence type | What we did | What it can support |
 |---|---|---|
@@ -30,6 +35,8 @@ The session began with three research stages: understanding the connectome relea
 | Selected code and data inspection | Inspected the original Shiu implementation, official counting outputs and capture CSVs, and selected community methods | Specific statements about those versions and files |
 | Repository review | Retrieved a README and root listing for all 96 distinct directly linked repositories; read selected additional files | High-level descriptions and qualified reports of authors' results |
 | Focused feeding-repository review | Inspected model, body, integration, packing, documentation, and tests at commit 86c7d84; ran all 15 included tests | Behavior of the tested software and its documented boundaries; no new biological validation |
+| Neuromodulation follow-up | Read primary studies and inspected DOOMFLY protocol, v6 code, and reported failures at commit 71ecf53 | Scientific motivation, implementation boundaries, and proposed tests; no Doom experiment rerun |
+| Hedgehog source-data inspection | Verified matching publisher/mirror workbooks and extracted selected observations with source-cell provenance | Actual available measurements, descriptive summaries, and compatibility gaps; no model fit or biological validation |
 | Engineering calculations | Calculated matrix storage and an illustrative edge-sweep workload | Estimates under the stated assumptions |
 | Proposed research | Designed an experiment and validation strategy | A plan to test; no demonstrated outcome |
 
@@ -38,6 +45,10 @@ The complete published Cell methods were not directly accessible during the init
 Original session artifacts: [connectome analysis](../research/fruit-fly-brain-analysis.md), [repository review](../research/awesome-fly-repository-review.md), [96-entry CSV](../research/awesome-fly-repositories.csv), [technical source audit](../research/source-audit.json), and [repository provenance audit](../research/awesome-fly-review-sources.json). The audits preserve inspected versions, file hashes, source locations, and coverage. All repository descriptions are a snapshot of the session review, not a promise about later commits.
 
 The additional [feeding-repository audit](../research/fly-brain-feeding-audit.json) records its pinned commit, inspected-file hashes, test command, and observed outputs. There are 97 distinct repositories reviewed across the original collection and this follow-up; the original collection's 96-entry count and source CSV are unchanged.
+
+The [neuromodulation source audit](neuromodulation-source-audit.json) records the later focused code inspection and literature review. DOOMFLY was already in the collection, so this reinspection does not increase the distinct-repository count.
+
+The [Hedgehog data audit](hedgehog-data-audit.json) records the pinned 2022 workbook, selected CSV exports, units, and data-quality questions. It does not add a repository to the collection or establish a completed physiological simulation.
 
 ## 3. What Google and its collaborators actually released
 
@@ -211,7 +222,7 @@ These are **simulation outputs**, not animal measurements. MN9 clamping prevente
 
 Passing these tests establishes the tested software behavior. We did not independently regenerate the packed graph from the original source files, rerun a full-network Brian2 comparison, or validate its movement against tracked flies. The underlying Shiu model has task-specific biological evidence; the added contact encoder and mechanics do not automatically inherit quantitative biological accuracy. [Shiu et al., 2024](https://www.nature.com/articles/s41586-024-07763-9), [repository validation boundaries](https://github.com/dicnunz/fly-brain-feeding/blob/86c7d84fccb1269842c8520846fc006a79fb3487/docs/validation.md)
 
-**Implication for our project.** Use this as an engineering starting point and acknowledge its existing taste-to-mouth loop. Our proposed contribution is a calibrated model of dietary history and gut Hedgehog signaling, evaluated on biological data held out from fitting. A first extension would make sensory input depend on sugar concentration and the appropriate gut-dependent state, with one fixed neural model and motor readout. Ingestion and time-dependent gut updates would follow separately. The female model versus male Hedgehog benchmark remains a scientific compatibility question, not a drop-in assumption.
+**Implication for our project.** Retain this as a candidate engineering starting point and acknowledge its existing taste-to-mouth loop. First establish a compatible benchmark and compare a small physiological model with simpler alternatives. A circuit extension would then make sensory input depend on concentration and the appropriate gut-dependent state, with independently supported input and output mappings. Ingestion and time-dependent gut updates remain later work. The female model versus male Hedgehog benchmark is a scientific compatibility question, not a drop-in assumption.
 
 ## 6. The proposed experiment: dietary history changes sugar response
 
@@ -219,7 +230,7 @@ Passing these tests establishes the tested software behavior. We did not indepen
 
 This narrows the user's whole-organism idea to one mechanism that can be built, explained, and challenged. The long-term aspiration remains a body–brain system with meaningful internal state. A complete biological clone is not an established or near-term deliverable.
 
-The feeding-repository review makes the initial engineering path concrete: start from its tested contact-to-neuron-to-mouth implementation, then develop the physiological extension. Existing movement-to-contact feedback and proposed intake-to-gut feedback are two distinct loops. Adding taste sensing and a moving mouth is already demonstrated prior work.
+The feeding-repository review supplies an engineering candidate, but the critique adds a preceding feasibility stage: select compatible measurements, compare competing small models, and justify the downstream observable before extending the contact-to-neuron-to-mouth implementation. Existing movement-to-contact feedback and proposed intake-to-gut feedback are two distinct loops. Adding taste sensing and a moving mouth is already demonstrated prior work.
 
 ### Published biological target
 
@@ -230,7 +241,21 @@ Zhao et al. studied adult male flies and found that dietary sugar induces gut He
 | Standard sugar | Reference response | Increased response |
 | High sugar | Reduced sweet response | Usual diet-dependent suppression lost |
 
-These qualitative findings are benchmarks to reproduce under matched experimental conditions, not simulated results from our project. The source provides sensory physiology and proboscis-extension measurements. We have not extracted its numerical data, fitted kinetics, or reproduced its curves. [Study and source-data links](https://www.nature.com/articles/s41467-022-35527-4)
+These qualitative findings are benchmarks to reproduce under matched experimental conditions, not simulated results from our project. The September 26 data follow-up downloaded and inspected the ten-sheet workbook, verified matching publisher/mirror hashes, and exported selected protein, sensory, and PER observations. No physiological model has been fitted and no curves have been reproduced by a neural simulation. [Study and source-data links](https://www.nature.com/articles/s41467-022-35527-4), [data audit](hedgehog-data-audit.json)
+
+### How the measured data connect to the experiment
+
+The proposed chain is dietary history → a relative gut/circulating Hh state → a measured sensory-response model → the fixed feeding circuit → a calibrated PER observation. Different datasets constrain different links. Relative expression and protein measurements constrain physiology; sensory recordings constrain the neural input; PER supplies a behavioral target. They are not interchangeable values to inject into the connectome.
+
+Our extraction reveals an essential compatibility gap: the main sensory dose-response assay uses L-glucose, whereas the principal PER curves use sucrose. Assay ages and genetic backgrounds also require alignment. We should not treat those measurements as paired observations from the same flies or substitute equal numerical concentrations. The first benchmark may need to remain at the sensory level until a quantitative sensory-to-behavior bridge is justified.
+
+The detailed [data-to-model plan](hedgehog-experiment-data-and-value.md#2-the-practical-connection-to-the-neural-model) includes exact example values, units, the existing stochastic-input interface, and the PER observation rule. Its audit identifies reused control observations and ambiguous metadata that must be excluded from an independent evaluation split until resolved.
+
+### Practical value of the first experiment
+
+The eventual circuit question is whether measured changes at the sensory periphery can explain altered feeding initiation through an unchanged neural circuit. The first feasibility question is whether compatible measurements and independently supported interfaces permit that test. Failure would challenge the combined model, without identifying whether sensory mapping, central dynamics, motor readout, or physiology caused the mismatch. Comparing alternatives could help select laboratory experiments where their predictions differ.
+
+The reusable deliverable is a reproducible physiology-to-neural-input benchmark with fixed observation rules and controls. Its value depends on predicting measurements withheld from fitting and testing whether a simpler model does equally well. Recreating a known qualitative result in an animation alone would not be new biological knowledge. The [practical-value assessment](hedgehog-experiment-data-and-value.md#6-what-is-the-practical-value) distinguishes this near-term purpose from later whole-organism or population aspirations.
 
 ### Why taste is the initial modality
 
@@ -248,15 +273,15 @@ The recent gustatory connectome supplies an anatomical route into feeding circui
 | Sensory encoding | Concentration-to-activity relationship for selected gustatory neurons | Fit or constrain using physiology |
 | Neural circuit | Versioned measured connectivity with documented dynamics | Anatomy measured; dynamics modeled |
 | Physiological state | A gut-signal state that changes the appropriate sensory response | Simplification to calibrate and test |
-| Motor readout | Relevant motor activity and proboscis-extension proxy | Calibrate once; do not retune by condition |
+| Motor readout | Relevant motor activity and proboscis-extension proxy | Requires independent support; freezing a fitted threshold alone is insufficient |
 | Ingestion | Optional explicit model converting successful feeding into intake | Additional assumption, not implied by extension |
 | Gut update | Intake history changes the modeled gut state | Later closed-loop stage requiring temporal data |
 
 In the existing repository, `FlyBody.sensoryRates()` supplies a fixed 200 Hz input during contact. The extension should replace this assumption with a calibrated concentration-and-state response, without adding a direct diet-to-mouth command. The repository's normalized joint extension is also not yet a measured probability of proboscis extension; that observation mapping needs its own calibration.
 
-The core loop is sugar contact → sensory activity → feeding circuit → mouth action → modeled intake and gut state → altered sensory responsiveness. A first implementation should replay measured diet-dependent states, validate the circuit response, and then attempt a dynamic intake-to-gut loop. This keeps unknown slow kinetics from obscuring an initial input–output failure.
+The long-term loop is sugar contact → sensory activity → feeding circuit → mouth action → modeled intake and gut state → altered sensory responsiveness. Begin with data compatibility and small-model comparison. Sensory-state replay can follow for a justified circuit question; an intake-to-gut loop additionally requires consumption and temporal data. Reproducing the direction of a prescribed state change would not validate those kinetics.
 
-Proboscis extension measures feeding initiation. It must not silently stand in for food consumption, digestion, energy storage, or reproduction. Our first output can be the probability or latency of extension, supplemented by sensory and motor activity. An ingestion model would add separately identified parameters and its own validation target.
+Proboscis extension measures feeding initiation. It must not silently stand in for food consumption, digestion, energy storage, or reproduction. Until the behavioral observation mapping is supported, report sensory and MN9 activity as intermediate model outputs. Probability or latency of extension requires a justified connection to the actual assay; ingestion adds separately identified parameters and its own validation target.
 
 ### Endocrine signaling and neuromodulation
 
@@ -307,6 +332,7 @@ The event's website describes a short build sprint. Our proposed hackathon deliv
 
 | Stage | Deliverable | Exit condition |
 |---|---|---|
+| Feasibility and model comparison | Compatible measurements, small competing models, and a fitting/evaluation plan | The observable is defensible; additional circuit complexity has a stated predictive purpose |
 | Data and circuit selection | Pinned fly-brain-feeding baseline and a decision on female-to-male transfer | Relevant cells, benchmark compatibility, and input/output semantics are documented |
 | Baseline assay | Extend the existing contact loop with calibrated sugar stimulation and motor readout | Sensory and behavioral mappings agree with relevant measurements |
 | Physiological replay | Standard/high-sugar states and gut-specific intervention | All conditions use one frozen model and readout |
@@ -314,7 +340,7 @@ The event's website describes a short build sprint. Our proposed hackathon deliv
 | Dynamic feedback | Explicit ingestion and time-dependent gut state | Temporal behavior is tested against suitable data |
 | Social extension | A small interacting group with a stated social mechanism | Individual and group endpoints have separate validation |
 
-The minimum credible presentation would show one virtual fly, the selected circuit, two diet histories, a gut-feedback manipulation, and clearly labeled biological-versus-model responses. If calibration is not complete, the demo must identify its traces as model outputs rather than a biological replication. The current HTML report is an explanation of this proposal and published qualitative patterns; it is not that prototype.
+The next reviewable deliverable is a comparison plot showing observations, predictions from competing explanations, and uncertainty, with fitting and evaluation conditions identified. A later presentation can show one virtual fly, two diet histories, a gut intervention, and biological-versus-model responses if their connection is justified. If calibration is incomplete, identify the traces as hypothetical model outputs. The current HTML report explains the earlier proposal and published qualitative patterns; it is not a neural prototype and remains unchanged.
 
 ### Components worth reusing
 
@@ -327,17 +353,18 @@ The minimum credible presentation would show one virtual fly, the selected circu
 | Future body/environment | Flybody or FlyGym | Which actions use trained controllers and which use the circuit |
 | Future vision | Flyvis | Input conventions, cell mapping, and scope of validated predictions |
 
-fly-brain-feeding is the recommended engineering starting point following its focused review. The biological dataset and physiological interface remain to be resolved; the other resources are candidates for specific layers. Selecting a runtime or obtaining a body model does not validate the biological interface between them.
+fly-brain-feeding remains the candidate engineering starting point if the feasibility study justifies a circuit extension. The biological dataset and physiological interfaces remain to be resolved; the other resources are candidates for specific layers. Selecting a runtime or obtaining a body model does not validate the biological interface between them.
 
 ## 10. Open questions and risks
 
 | Question or risk | Why it matters | Next resolving action |
 |---|---|---|
 | Which dataset and sex? | The available circuit and physiological studies are not all from the same specimen or sex | Select the benchmark first, then verify homologous cells |
-| Are numerical benchmark data usable? | Qualitative agreement can conceal poor quantitative prediction | Retrieve source data and reconstruct the exact assays |
+| Are numerical benchmark data compatible? | Available sensory, protein, and PER data differ in tastant, age, genotype, units, and replicate structure | Use the extracted source tables to select a matched benchmark and resolve identified ambiguities |
 | Where does the hormone act? | A global gain can mimic an outcome while misrepresenting the mechanism | Constrain targets using receptor and intervention evidence |
 | Are slow kinetics identifiable? | Several different dynamic models may fit the same endpoints | Begin with state replay; seek temporal measurements before claiming kinetics |
-| Does the readout dominate? | A decoder can manufacture a desired behavioral response | Calibrate once, freeze it, and test alternate explanations |
+| Does the readout dominate? | A fitted movement threshold can absorb the target effect; a fixed game interface still has engineered semantics | Obtain independent support for the biological observable, freeze the mapping, and test alternatives |
+| Does timing alter the result? | Developmental and adult Hh interventions differ; sensory averages leave spike timing uncertain | Restrict biological scope and assess plausible temporal encoders |
 | What does a reduced circuit omit? | Missing inputs may produce misleading dynamics | Document boundaries and test sensitivity to plausible external drive |
 | Is there a wiring advantage? | A simpler model may explain the same data | Use matched baselines; limit the claim if the advantage is absent |
 | Can it run at the desired scale? | Fast spiking, slow physiology, and many animals multiply work | Benchmark the chosen experiment before choosing population size |
@@ -355,10 +382,61 @@ Our recommendation remains provisional in the scientific sense: the selected cir
 | PER | Proboscis extension response; a feeding-initiation measure |
 | Endocrine signal | A signal acting through circulation on target tissues |
 | Neuromodulation | A change in how cells or circuits respond, through a specified chemical mechanism |
+| DAN | Dopamine neuron; its modeled firing is not itself a measured dopamine concentration |
+| KC / MBON | Kenyon cell / mushroom body output neuron, cell classes involved in the memory experiments discussed here |
 | Readout | The rule converting neural activity into an observable action or prediction |
 | Closed loop | Actions alter the world or body, which changes later sensory or physiological input |
 | Ablation/intervention | A precisely defined change used to test a component's role |
 | Held-out evaluation | Testing against data not used to fit the model |
+
+## 12. Alternative experiment: neuromodulation and Doom
+
+**The idea is scientifically useful if the intervention and its neural effects are independently constrained.** Comparing a fixed connectome model under different chemical states could reveal useful or harmful behavioral changes. The game is an observable test environment; biological credibility comes from reproducing an appropriate real-fly assay before interpreting game performance.
+
+The existing DOOMFLY experiment already stimulates selected dopamine neurons after damage and changes a restricted set of memory-related connections. Its current README explicitly reports failed visual, conditioning, and survival validation. Adding dopamine alone is therefore not the new contribution. A calibrated mechanism, controlled comparison, and independent prediction could be. [Pinned current status](https://github.com/nftechie/doomfly/blob/71ecf53d78eaffaf1a57ed7b0ccf5d458abc9f33/README.md)
+
+| Candidate | Proposed role | Key boundary |
+|---|---|---|
+| Octopamine | Candidate for a visual-motion assay before a game demonstration | Assess an established visual model; compare alternative modulation mechanisms |
+| Dopamine | Cue-specific learning and later retention | Location and timing matter; acute performance must be separated from memory |
+| Tyramine | A later adult behavioral-choice experiment | Larval motor effects do not establish an adult game-control mechanism |
+| Cortisol | Defer from the first experiment | No calibrated endogenous fly stress-to-neural-performance pathway established by this review |
+
+Real-fly evidence motivates both leading options: octopamine application can change visual motion responses, and specified dopamine signals participate in visual associative learning. Neither result predicts that our Doom model will score better. [Octopamine experiment](https://pubmed.ncbi.nlm.nih.gov/23142045/), [visual learning experiment](https://pmc.ncbi.nlm.nih.gov/articles/PMC4135349/)
+
+Cortisol needs a qualification: a study reported cortisone-acetate effects on fly susceptibility to fungal infection involving dmERR. That finding does not establish a cortisol-driven adult neural stress model, and the study left direct receptor binding unresolved. [Steroid study](https://link.springer.com/article/10.1186/s12866-020-01848-x)
+
+The proposed sequence is: establish a small visual assay; fit one specified modulatory mechanism using biological measurements; reserve independent conditions for evaluation; freeze the game interface; then compare matched model runs. For dopamine, add training followed by testing without imposed stimulation, paired versus unpaired exposure, and frozen-plasticity controls. For octopamine, first compare identical visual input with learning disabled, then evaluate closed-loop behavior.
+
+The demonstration would show baseline and intervention side by side, with actual intervention timing, selected neural responses, behavior, and results across repeated runs. A higher firing rate, more shooting, or a longer individual round would not by itself demonstrate better perception or learning. Unchanged or worse performance is a legitimate outcome.
+
+The [detailed neuromodulation report](neuromodulation-doom-experiment.md) explains the code findings, chemical candidates, controls, visualization, and comparison with gut–Hedgehog feedback. This alternative has not been implemented or simulated here. The HTML presentation is intentionally unchanged.
+
+### What would establish scientific grounding?
+
+The decisive evidence would be a fixed model predicting real-fly measurements and intervention effects withheld from calibration. We should first choose one biological assay, acquire its quantitative data, declare the fitting/evaluation split and acceptance criteria, and freeze the model and readout before evaluation. Compare with simpler explanations and report errors and uncertainty. A modeled pathway ablation is only biologically informative when it predicts the relevant experimental result; disabling an encoded effect alone checks implementation.
+
+Validation applies to the specific neural or behavioral assay tested. It does not automatically validate an entire fly or predict how living flies would perform in Doom. Our present work establishes scientific motivation and a proposed validation protocol, not a validated neuromodulation model. The [concrete validation criteria](neuromodulation-doom-experiment.md#9-how-we-would-establish-scientific-grounding) cover measurement compatibility, failures, retrospective versus prospective evidence, and the claims each stage would support.
+
+## 13. Critical review and revised priorities
+
+At the user's request, a separate critic agent challenged both proposals against the reports, selected code, and primary literature. Its recommendation is to **start a small Hedgehog feasibility study, assess octopamine as an alternative circuit experiment, and defer dopamine–Doom**. This review produced no new simulations or biological validation. The [full critique](experiment-critique.md) distinguishes facts, inferences, unresolved questions, and blockers for specific claims.
+
+For Hedgehog, developmental timing changes the result: gut overexpression throughout development increased PER, while adult-restricted overexpression suppressed it. Adult interventions remain meaningful, but a universal hormone slider and meal-driven secretion dynamics are not established by the selected data. MN9 adds a separate observation problem: it controls rostrum lifting, and its firing-to-movement probability relationship is explicitly uncertain in Shiu's study. Fitting a full-extension threshold could absorb the physiological effect. [Hedgehog study](https://pmc.ncbi.nlm.nih.gov/articles/PMC9763350/), [Shiu et al., 2024](https://pmc.ncbi.nlm.nih.gov/articles/PMC11446845/)
+
+The critic also identified two modeling risks. Three-second sensory averages leave spike timing and correlations unspecified. Separately, fitted sensory and motor interfaces might explain the data without the connectome. Test plausible encoders and simpler alternatives; a cell-specific intervention would make a stronger test of the wiring's predictive value than reproducing another qualitative diet difference.
+
+For Doom, a fixed neural-to-button mapping controls one source of variation but does not supply biological semantics. A different reasonable mapping could change the game consequence of the same neural intervention. DOOMFLY's authors already report failed visual and conditioning validation; those failures were not independently rerun here. [Pinned repository status](https://github.com/nftechie/doomfly/blob/71ecf53d78eaffaf1a57ed7b0ccf5d458abc9f33/README.md)
+
+For octopamine, compare mechanisms affecting excitability, temporal filtering, and generic gain. A broad neuronal silencing experiment is not a selective Mi4 receptor intervention. Existing visual models with cell-specific response predictions are candidates to assess before repairing a failing whole-brain visual implementation; their prior validation does not automatically extend to our proposed modulation. [Visual-modulation study](https://pmc.ncbi.nlm.nih.gov/articles/PMC5776785/), [visual model](https://www.nature.com/articles/s41586-024-07939-3)
+
+| Route | Next milestone | Condition for proceeding |
+|---|---|---|
+| Hedgehog | Compare a small history-dependent sensory model with a simpler diet-to-response model | Compatible evaluation measurements and independently supported interfaces; no condition-specific readout tuning |
+| Octopamine | Establish baseline visual responses and compare modulation mechanisms | Reserved biological responses constrain the mechanism relative to alternatives |
+| Dopamine–Doom | Demonstrate sensory discrimination, cue-specific learning, and retention | Reproducible paired/unpaired and frozen-plasticity controls pass before game claims |
+
+The next scientific deliverable should be an observation-versus-prediction plot that exposes where explanations agree and differ. If simple models perform equally well, retain the benchmark but narrow the claim about the connectome. If predictions fail, investigate the combined model's assumptions; that failure alone does not refute the biological mechanism. Neither a fitted curve nor a convincing animation uniquely identifies a cause.
 
 ## Appendix: complete inventory of 96 reviewed repositories
 
@@ -1733,4 +1811,6 @@ Repository: flyconnectome/tools
 
 The repository audit records the original collection URL, retrieved content hashes, observed commits, inspected source files, and one-to-one coverage. The original technical audit pins, among other sources, the Shiu implementation at 91bdd1e7dcf193f3e7ca5a8933497fcef63b7960 and the MaleCNS supplementary repository at 67767d2233657983993ff6c2be48e836a935863c. Performance figures in the original collection remain authors' reports. The additional fly-brain-feeding audit pins commit 86c7d84fccb1269842c8520846fc006a79fb3487 and records the 15 locally rerun tests and the model outputs explicitly labeled above. No Hedgehog replication or population-throughput benchmark has been performed.
 
-The report builder preserves the 96-entry source CSV and embeds this complete Markdown report in the HTML companion for offline download. External links are citations and require internet access to open; the report itself, its directory filter, and its qualitative experiment explorer do not.
+The Hedgehog follow-up pins the source workbook at SHA-256 41deeecbecbcc97d0c1336c4b1aaf009b3723b93c396086c0cc0ba1fb4866667 and supplies a reproducible extraction script and selected numerical tables. These are published observations and descriptive calculations, not outputs from a new biological model.
+
+The report builder preserves the 96-entry source CSV. Written-report updates preserve the HTML companion and its previously embedded Markdown snapshot; a presentation rebuild requires an explicit request. The current written reports include the neuromodulation follow-up, Hedgehog data mapping, and critic review. The critique is a separate agent's literature/code assessment, not an independent experimental replication. External citations require internet access; the preserved HTML and its earlier embedded report remain usable offline.

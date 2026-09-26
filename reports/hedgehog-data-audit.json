@@ -1,0 +1,142 @@
+{
+  "reviewed_on": "2026-09-26",
+  "paper": {
+    "title": "Hedgehog-mediated gut-taste neuron axis controls sweet perception in Drosophila",
+    "authors": "Zhao et al.",
+    "year": 2022,
+    "doi": "10.1038/s41467-022-35527-4",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9763350/",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "workbook": {
+    "filename": "41467_2022_35527_MOESM3_ESM.xlsx",
+    "bytes": 10600824,
+    "sha256": "41deeecbecbcc97d0c1336c4b1aaf009b3723b93c396086c0cc0ba1fb4866667",
+    "publisher_url": "https://media.springernature.com/full/springer-static/esm/art%3A10.1038%2Fs41467-022-35527-4/MediaObjects/41467_2022_35527_MOESM3_ESM.xlsx",
+    "mirror_archive_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9763350/supplementaryFiles",
+    "publisher_and_mirror_bytes_matched": true,
+    "sheets": [
+      {
+        "name": "Fig 1",
+        "nonempty_cells": 2053
+      },
+      {
+        "name": "Fig 2",
+        "nonempty_cells": 2497
+      },
+      {
+        "name": "Fig 3",
+        "nonempty_cells": 1567
+      },
+      {
+        "name": "Fig 4",
+        "nonempty_cells": 922
+      },
+      {
+        "name": "Fig 5",
+        "nonempty_cells": 28
+      },
+      {
+        "name": "Fig 6",
+        "nonempty_cells": 2528
+      },
+      {
+        "name": "Fig 7",
+        "nonempty_cells": 262
+      },
+      {
+        "name": "Fig S2",
+        "nonempty_cells": 32
+      },
+      {
+        "name": "Fig S4",
+        "nonempty_cells": 63
+      },
+      {
+        "name": "Fig S5",
+        "nonempty_cells": 708
+      }
+    ]
+  },
+  "exports": [
+    {
+      "path": "reports/data/hedgehog-per-fig1b.csv",
+      "rows": 1071,
+      "sha256": "63b8d46b718e2606b2f327f738d97df63ea00c8c975228d59220401abaef1f33"
+    },
+    {
+      "path": "reports/data/hedgehog-sensory-fig7b.csv",
+      "rows": 76,
+      "sha256": "825cd23563eaf1be7e40a7071aa1a3ad9149f00068cd21e74a2117f7e4fa41e6"
+    },
+    {
+      "path": "reports/data/hedgehog-protein-fig4.csv",
+      "rows": 17,
+      "sha256": "c7a5910f3e7f4ae9d21d6758595dca5617f762ea23d4000b06e382bb1b9f213f"
+    }
+  ],
+  "transformations": [
+    "Selected numerical cells exported with original sheet/cell provenance.",
+    "Fig 1b diet fractions carried down their seven-row blocks.",
+    "Fig 7b three-second evoked counts also expressed as a mean per second; not instantaneous firing or baseline activity.",
+    "No concentration, age, genotype, batch, or per-fly pairing harmonization performed.",
+    "Means calculated directly from rounded workbook values; no significance reanalysis."
+  ],
+  "example_summaries": [
+    {
+      "panel": "1b",
+      "diet_sucrose_fraction": 0.06,
+      "stimulus": "100 mM sucrose",
+      "n_fly_aggregates": 39,
+      "mean_per_percent": 16.235897435897435
+    },
+    {
+      "panel": "1b",
+      "diet_sucrose_fraction": 0.34,
+      "stimulus": "100 mM sucrose",
+      "n_fly_aggregates": 36,
+      "mean_per_percent": 2.7777777777777777
+    },
+    {
+      "panel": "7b",
+      "genotype": "Mex-Gal4",
+      "stimulus": "100 mM L-glucose",
+      "n_sensillum_records": 11,
+      "mean_evoked_spikes_per_3s": 75.36363636363636,
+      "derived_mean_evoked_spikes_per_s": 25.12121212121212
+    },
+    {
+      "panel": "7b",
+      "genotype": "Mex-Gal4>UAS-Hh-RNAi",
+      "stimulus": "100 mM L-glucose",
+      "n_sensillum_records": 7,
+      "mean_evoked_spikes_per_3s": 121.71428571428571,
+      "derived_mean_evoked_spikes_per_s": 40.57142857142857
+    }
+  ],
+  "quality_and_compatibility_notes": [
+    "Fig 1b uses sucrose; Fig 7b uses L-glucose. Equal mM does not establish equal sensory input.",
+    "Main methods describe PER four days after diet switch and electrophysiology at age 8-10 days.",
+    "PER entries are percentages of three trials per fly. Source columns are not verified cross-condition fly identifiers.",
+    "Fig 7 recordings are sensillum measurements nested within flies, not independent animal replicates.",
+    "Fig 3 axes show log10 relative expression. Negative values must not be interpreted as negative protein concentration.",
+    "Fig 4d and 4f use different genotype comparisons and normalization contexts; do not pool scales without checking.",
+    "Fig 1b C3:AO9 exactly repeats in Fig 3g C45:AO51. Do not count as independent validation.",
+    "Fig 3f row labels for 34% and 34%>6% appear inconsistent with the corresponding arrays in Fig 3e; quarantine pending clarification.",
+    "Fig 7f workbook cell A27 labels diet 0.34, while the published panel and caption say 15%; quarantine pending clarification."
+  ],
+  "followup_paper": {
+    "year": 2023,
+    "doi": "10.1016/j.celrep.2023.113387",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/37934669/",
+    "role": "Related same-group taste-balancing study; candidate future comparison, not independent-laboratory replication.",
+    "data_availability": "Article states reported data are available from lead contact on request; not acquired here."
+  },
+  "status": {
+    "selected_source_data_extracted": true,
+    "model_fitted": false,
+    "neural_simulation_run_for_this_followup": false,
+    "biological_validation_completed": false
+  }
+}
