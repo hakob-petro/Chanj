@@ -1,0 +1,26 @@
+{
+  "review_date": "2026-09-25",
+  "compiled_on": "2026-09-26",
+  "repositories": 96,
+  "category_counts": {
+    "Starter template": 1,
+    "Games and control experiments": 20,
+    "Models, simulation engines and research": 18,
+    "Desktop pets and interactive worlds": 10,
+    "Language, art and other experiments": 13,
+    "Datasets and annotations": 8,
+    "Analysis and visualization tools": 21,
+    "Tutorials": 3,
+    "Related resource lists": 2
+  },
+  "report_words": 12718,
+  "report_sha256": "883414a9dbc377e036fc669b5d04307941862c11891f2e01815af8cd9c36ace7",
+  "html_bytes": 489684,
+  "html_sha256": "f1a6ae78f52c68ba65e59fc931b5d5e80d736feae43fbc1611b7b8b72816a064",
+  "scientific_status": "Literature and repository review; proposed experiment; no simulation executed.",
+  "font": {
+    "family": "Bricolage Grotesque",
+    "license": "SIL Open Font License 1.1",
+    "source": "https://github.com/google/fonts/tree/main/ofl/bricolagegrotesque"
+  }
+}

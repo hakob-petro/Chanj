@@ -1,0 +1,83 @@
+{
+  "states": [
+    {
+      "diet": "standard",
+      "feedback": "intact",
+      "title": "The reference response."
+    },
+    {
+      "diet": "standard",
+      "feedback": "blocked",
+      "title": "An increased sugar response."
+    },
+    {
+      "diet": "high",
+      "feedback": "intact",
+      "title": "Reduced sweet response."
+    },
+    {
+      "diet": "high",
+      "feedback": "blocked",
+      "title": "The usual suppression is lost."
+    }
+  ],
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "desktop",
+      "innerWidth": 1440,
+      "scrollWidth": 1440,
+      "bodyWidth": 1440,
+      "fontLoaded": true,
+      "headingStyle": {
+        "font": "72px",
+        "lineHeight": "80.64px",
+        "spacing": "-1.8px"
+      },
+      "responseStyle": {
+        "font": "31px",
+        "lineHeight": "36.58px",
+        "spacing": "-0.775px"
+      },
+      "bodyLeading": "28.05px"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "mobile",
+      "innerWidth": 390,
+      "scrollWidth": 390,
+      "bodyWidth": 390,
+      "fontLoaded": true,
+      "headingStyle": {
+        "font": "49px",
+        "lineHeight": "50.47px",
+        "spacing": "-1.225px"
+      },
+      "responseStyle": {
+        "font": "28px",
+        "lineHeight": "33.04px",
+        "spacing": "-0.7px"
+      },
+      "bodyLeading": "26.4px"
+    }
+  ],
+  "result": "passed",
+  "errors": [],
+  "remoteRequests": [],
+  "checks": [
+    "All four evidence states",
+    "96 source entries",
+    "Category and text filters",
+    "Empty and reset states",
+    "Native disclosures",
+    "Internal anchors and unique IDs",
+    "Exact full-report download",
+    "Offline with no network requests",
+    "Responsive overflow at 320, 390, 1440 pixels",
+    "Embedded font",
+    "Print-to-PDF generation",
+    "No-JavaScript reading fallback"
+  ]
+}

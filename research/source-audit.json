@@ -1,0 +1,183 @@
+{
+  "reviewed_on": "2026-09-25",
+  "scope": "Primary-source and selected source-code review; not an independent reproduction of neural simulations or game results.",
+  "paper_access": {
+    "published_summary": "https://doi.org/10.1016/j.cell.2026.08.015",
+    "full_methods_reviewed": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12636603/",
+    "methods_version": "2025-10-30 preprint v2",
+    "limitation": "Direct full-text Cell access failed; published summary retrieved via web search. Preprint metrics are labeled as such."
+  },
+  "commits": [
+    {
+      "repository": "flyconnectome/2025malecns",
+      "sha": "67767d2233657983993ff6c2be48e836a935863c",
+      "commit_date": "2026-08-07T10:59:08Z"
+    },
+    {
+      "repository": "philshiu/Drosophila_brain_model",
+      "sha": "91bdd1e7dcf193f3e7ca5a8933497fcef63b7960",
+      "commit_date": "2024-09-14T13:47:44Z"
+    },
+    {
+      "repository": "nftechie/doomfly",
+      "sha": "71ecf53d78eaffaf1a57ed7b0ccf5d458abc9f33",
+      "commit_date": "2026-09-09T15:11:10Z"
+    },
+    {
+      "repository": "cobanov/flyjump",
+      "sha": "c08c86bc18efd8125964b1d2ca4fc1df59700f30",
+      "commit_date": "2026-09-12T13:35:18Z"
+    }
+  ],
+  "source_files": [
+    {
+      "file": "male-cns-v1.0-synapse-connection-precision-recall-by-roi.csv",
+      "repository": "flyconnectome/2025malecns",
+      "revision": "67767d2233657983993ff6c2be48e836a935863c",
+      "url": "https://raw.githubusercontent.com/flyconnectome/2025malecns/67767d2233657983993ff6c2be48e836a935863c/supplemental_data/male-cns-v1.0-synapse-connection-precision-recall-by-roi.csv",
+      "sha256": "ec7f81cf878c578bbc5ef6115cc2e92c4dcbeffcc6bc02ee3e7b5bb2306251ff",
+      "bytes": 2972
+    },
+    {
+      "file": "male-cns-v1.0-traced-synapse-capture-by-roi.csv",
+      "repository": "flyconnectome/2025malecns",
+      "revision": "67767d2233657983993ff6c2be48e836a935863c",
+      "url": "https://raw.githubusercontent.com/flyconnectome/2025malecns/67767d2233657983993ff6c2be48e836a935863c/supplemental_data/male-cns-v1.0-traced-synapse-capture-by-roi.csv",
+      "sha256": "b91253bcb26d3496b1ddcf17c05006384ee98bebb729ed7d62e3529131e28e64",
+      "bytes": 12726
+    },
+    {
+      "file": "quantify-neuron-connections.ipynb",
+      "repository": "flyconnectome/2025malecns",
+      "revision": "67767d2233657983993ff6c2be48e836a935863c",
+      "url": "https://raw.githubusercontent.com/flyconnectome/2025malecns/67767d2233657983993ff6c2be48e836a935863c/supplemental_data/quantify-neuron-connections.ipynb",
+      "sha256": "0f8b191be7cea941799133e5fc354ee299b849ceb26e4fb2904e3b07108357ec",
+      "bytes": 5170
+    }
+  ],
+  "v1_capture_csv_major_compartments": [
+    {
+      "compartment": "CNS Major Compartments",
+      "roi": "CV",
+      "roi_base": "CV",
+      "roi_side": "C",
+      "PreSyn": 28414,
+      "PostSyn": 122569,
+      "presyn_traced_frac": 0.3943478566903639,
+      "postsyn_traced_frac": 0.2968274059858724,
+      "conn_traced_frac": 0.0557184271773304,
+      "synweight_traced_frac": 0.3191294761340901
+    },
+    {
+      "compartment": "CNS Major Compartments",
+      "roi": "CentralBrain",
+      "roi_base": "CentralBrain",
+      "roi_side": "C",
+      "PreSyn": 20311220,
+      "PostSyn": 146214930,
+      "presyn_traced_frac": 0.9451066229265028,
+      "postsyn_traced_frac": 0.3684828438071236,
+      "conn_traced_frac": 0.3510271943406688,
+      "synweight_traced_frac": 0.6613760206937297
+    },
+    {
+      "compartment": "CNS Major Compartments",
+      "roi": "Optic(L)",
+      "roi_base": "Optic",
+      "roi_side": "L",
+      "PreSyn": 7571353,
+      "PostSyn": 51395970,
+      "presyn_traced_frac": 0.9288246436959416,
+      "postsyn_traced_frac": 0.4511466119882947,
+      "conn_traced_frac": 0.4297258661077105,
+      "synweight_traced_frac": 0.6994233799577853
+    },
+    {
+      "compartment": "CNS Major Compartments",
+      "roi": "Optic(R)",
+      "roi_base": "Optic",
+      "roi_side": "R",
+      "PreSyn": 7341747,
+      "PostSyn": 49395720,
+      "presyn_traced_frac": 0.9493628437290408,
+      "postsyn_traced_frac": 0.5530267388521949,
+      "conn_traced_frac": 0.5379404733588397,
+      "synweight_traced_frac": 0.7595108723984048
+    },
+    {
+      "compartment": "CNS Major Compartments",
+      "roi": "VNC",
+      "roi_base": "VNC",
+      "roi_side": "C",
+      "PreSyn": 10371748,
+      "PostSyn": 64552116,
+      "presyn_traced_frac": 0.910940647827967,
+      "postsyn_traced_frac": 0.4026225015376023,
+      "conn_traced_frac": 0.3723366235384103,
+      "synweight_traced_frac": 0.656741170447883
+    }
+  ],
+  "capture_interpretation": "Fractions describe detected synaptic connections captured between traced neurons. They are not the false-positive rate of retained edges. No reconstructed global fraction is asserted from these regional rows.",
+  "count_notebook": {
+    "configured_version": "v0.9",
+    "verification": "Inspected source and saved outputs only; no full graph re-run.",
+    "stored_stdout": [
+      "There are 20 valid superclasses\nThere are 11691 valid types\nThere are 25563426 edges between neurons with valid superclasses, connecting 166391 neurons\nAfter thresholding by connection strength >= 5, there are 6237402 edges between 165752 neurons\nAfter aggregating thresholded edges by type, there are 929735 type-type edges between 11687 types\n"
+    ]
+  },
+  "shiu_code_audit": {
+    "model_sha256": "fc45837d7122c6ce2a7f3f2f23c515992e4b232aadb919efabb72337fac88e4e",
+    "rest_mV": -52,
+    "reset_mV": -52,
+    "threshold_mV": -45,
+    "membrane_tau_ms": 20,
+    "synapse_tau_ms": 5,
+    "refractory_ms": 2.2,
+    "delay_ms": 1.8,
+    "weight_per_contact_mV": 0.275,
+    "silencing": "Implementation zeros outgoing weights; README describes both incoming and outgoing."
+  },
+  "community_results": {
+    "verification": "Authors own reported results and methods, not independently run.",
+    "doomfly": {
+      "retained_neurons": 166700,
+      "directed_edges": 25582938,
+      "contacts": 124177617,
+      "learning_claim": "Survival learning has not been demonstrated. Current physiology and conditioning do not pass validation."
+    },
+    "fly_dino": {
+      "circuit_cells": 80,
+      "directed_edges": 1296,
+      "contacts": 26029,
+      "readout_parameters": 243,
+      "trained_component": "Artificial readout only",
+      "topology_advantage": "Not tested with equally trained matched rewired networks in reviewed protocol."
+    }
+  },
+  "original_storage_calculation": {
+    "assumptions": {
+      "neurons": 166700,
+      "directed_edges": 25582938,
+      "weight_bytes": 4,
+      "column_index_bytes": 4,
+      "row_pointer_bytes": 4
+    },
+    "dense_bytes": 111155560000,
+    "csr_bytes": 205330308,
+    "excludes": "Model states, delays, framework overhead, copies, optimizers, activations, and input/output buffers."
+  },
+  "pinned_source_verification": [
+    {
+      "file": "male-cns-v1.0-synapse-connection-precision-recall-by-roi.csv",
+      "pinned_source_matches_reviewed_bytes": true
+    },
+    {
+      "file": "male-cns-v1.0-traced-synapse-capture-by-roi.csv",
+      "pinned_source_matches_reviewed_bytes": true
+    },
+    {
+      "file": "quantify-neuron-connections.ipynb",
+      "pinned_source_matches_reviewed_bytes": true
+    }
+  ]
+}

@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-25T20:36:50.119257+00:00",
+  "title": "Design System: Firebird research reports",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "primary",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(15% 0.0463 173.20)",
+          "oklch(26% 0.0463 173.20)",
+          "oklch(38% 0.0463 173.20)",
+          "oklch(49% 0.0463 173.20)",
+          "oklch(61% 0.0463 173.20)",
+          "oklch(72% 0.0463 173.20)",
+          "oklch(84% 0.0463 173.20)",
+          "oklch(95% 0.0463 173.20)"
+        ]
+      },
+      "field": {
+        "role": "primary",
+        "displayName": "Field",
+        "tonalRamp": [
+          "oklch(15% 0.1046 121.70)",
+          "oklch(26% 0.1046 121.70)",
+          "oklch(38% 0.1046 121.70)",
+          "oklch(49% 0.1046 121.70)",
+          "oklch(61% 0.1046 121.70)",
+          "oklch(72% 0.1046 121.70)",
+          "oklch(84% 0.1046 121.70)",
+          "oklch(95% 0.1046 121.70)"
+        ]
+      },
+      "field-ink": {
+        "role": "primary",
+        "displayName": "Field Ink",
+        "tonalRamp": [
+          "oklch(15% 0.0652 140.70)",
+          "oklch(26% 0.0652 140.70)",
+          "oklch(38% 0.0652 140.70)",
+          "oklch(49% 0.0652 140.70)",
+          "oklch(61% 0.0652 140.70)",
+          "oklch(72% 0.0652 140.70)",
+          "oklch(84% 0.0652 140.70)",
+          "oklch(95% 0.0652 140.70)"
+        ]
+      },
+      "purple": {
+        "role": "secondary",
+        "displayName": "Purple",
+        "tonalRamp": [
+          "oklch(15% 0.0777 302.27)",
+          "oklch(26% 0.0777 302.27)",
+          "oklch(38% 0.0777 302.27)",
+          "oklch(49% 0.0777 302.27)",
+          "oklch(61% 0.0777 302.27)",
+          "oklch(72% 0.0777 302.27)",
+          "oklch(84% 0.0777 302.27)",
+          "oklch(95% 0.0777 302.27)"
+        ]
+      },
+      "lilac": {
+        "role": "secondary",
+        "displayName": "Lilac",
+        "tonalRamp": [
+          "oklch(15% 0.0184 306.66)",
+          "oklch(26% 0.0184 306.66)",
+          "oklch(38% 0.0184 306.66)",
+          "oklch(49% 0.0184 306.66)",
+          "oklch(61% 0.0184 306.66)",
+          "oklch(72% 0.0184 306.66)",
+          "oklch(84% 0.0184 306.66)",
+          "oklch(95% 0.0184 306.66)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "tonalRamp": [
+          "oklch(15% 0.0057 128.52)",
+          "oklch(26% 0.0057 128.52)",
+          "oklch(38% 0.0057 128.52)",
+          "oklch(49% 0.0057 128.52)",
+          "oklch(61% 0.0057 128.52)",
+          "oklch(72% 0.0057 128.52)",
+          "oklch(84% 0.0057 128.52)",
+          "oklch(95% 0.0057 128.52)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "tonalRamp": [
+          "oklch(15% 0.0393 164.55)",
+          "oklch(26% 0.0393 164.55)",
+          "oklch(38% 0.0393 164.55)",
+          "oklch(49% 0.0393 164.55)",
+          "oklch(61% 0.0393 164.55)",
+          "oklch(72% 0.0393 164.55)",
+          "oklch(84% 0.0393 164.55)",
+          "oklch(95% 0.0393 164.55)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "tonalRamp": [
+          "oklch(15% 0.0266 154.37)",
+          "oklch(26% 0.0266 154.37)",
+          "oklch(38% 0.0266 154.37)",
+          "oklch(49% 0.0266 154.37)",
+          "oklch(61% 0.0266 154.37)",
+          "oklch(72% 0.0266 154.37)",
+          "oklch(84% 0.0266 154.37)",
+          "oklch(95% 0.0266 154.37)"
+        ]
+      },
+      "soft": {
+        "role": "neutral",
+        "displayName": "Soft",
+        "tonalRamp": [
+          "oklch(15% 0.0147 132.47)",
+          "oklch(26% 0.0147 132.47)",
+          "oklch(38% 0.0147 132.47)",
+          "oklch(49% 0.0147 132.47)",
+          "oklch(61% 0.0147 132.47)",
+          "oklch(72% 0.0147 132.47)",
+          "oklch(84% 0.0147 132.47)",
+          "oklch(95% 0.0147 132.47)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "tonalRamp": [
+          "oklch(15% 0.0000 89.88)",
+          "oklch(26% 0.0000 89.88)",
+          "oklch(38% 0.0000 89.88)",
+          "oklch(49% 0.0000 89.88)",
+          "oklch(61% 0.0000 89.88)",
+          "oklch(72% 0.0000 89.88)",
+          "oklch(84% 0.0000 89.88)",
+          "oklch(95% 0.0000 89.88)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Main report heading."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Sustained reading."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "anchor-scroll",
+        "value": "smooth",
+        "purpose": "Anchor navigation; disabled for reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-desktop",
+        "value": "1100px"
+      },
+      {
+        "name": "mobile",
+        "value": "760px"
+      },
+      {
+        "name": "narrow-mobile",
+        "value": "360px"
+      }
+    ],
+    "tonalRampNote": "Synthesized OKLCH ramps are preview metadata, not additional colors used by the shipped report."
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "description": "Download or primary document action.",
+      "html": "<button class=\"ds-primary\">Full report</button>",
+      "css": ".ds-primary{padding:10px 16px;min-height:44px;border:1px solid var(--ink,#183d33);border-radius:6px;font:600 14px/1.4 Arial,Helvetica,sans-serif;cursor:pointer;background:var(--ink,#183d33);color:var(--white,#fff)}.ds-primary:hover{background:#285448}.ds-primary:focus-visible{outline:3px solid var(--purple,#493663);outline-offset:5px}",
+      "refersTo": "button-primary"
+    },
+    {
+      "name": "Secondary button",
+      "kind": "button",
+      "description": "Secondary document action.",
+      "html": "<button class=\"ds-secondary\">Print</button>",
+      "css": ".ds-secondary{padding:10px 16px;min-height:44px;border:1px solid var(--ink,#183d33);border-radius:6px;font:600 14px/1.4 Arial,Helvetica,sans-serif;cursor:pointer;background:transparent;color:var(--ink,#183d33)}.ds-secondary:hover{background:var(--soft,#edf3e9)}.ds-secondary:focus-visible{outline:3px solid var(--purple,#493663);outline-offset:5px}",
+      "refersTo": "button-secondary"
+    },
+    {
+      "name": "Search field",
+      "kind": "input",
+      "description": "Labeled repository search.",
+      "html": "<label class=\"ds-search\">Search repositories<input type=\"search\" placeholder=\"Sugar, vision, or plasticity\"></label>",
+      "css": ".ds-search{display:block;font:600 14px/1.5 Arial,Helvetica,sans-serif;color:var(--ink,#183d33)}.ds-search input{display:block;width:100%;box-sizing:border-box;margin-top:8px;min-height:48px;padding:11px 14px;border:1px solid var(--muted,#486457);border-radius:6px;background:#fff;color:var(--ink,#183d33);font:15px Arial,Helvetica,sans-serif}.ds-search input::placeholder{color:#526c5c}.ds-search input:focus-visible{outline:3px solid var(--purple,#493663);outline-offset:5px}",
+      "refersTo": "search-input"
+    },
+    {
+      "name": "Section navigation",
+      "kind": "nav",
+      "description": "Compact text navigation between report sections.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Report sections\"><a href=\"#evidence\">Evidence</a><a href=\"#experiment\">Experiment</a><a href=\"#sources\">Sources</a></nav>",
+      "css": ".ds-nav{display:flex;gap:22px;font:13px/1.65 Arial,Helvetica,sans-serif;color:var(--ink,#183d33)}.ds-nav a{color:inherit;text-decoration:none;padding:8px 0;border-bottom:1px solid transparent}.ds-nav a:hover{border-bottom-color:currentColor}.ds-nav a:focus-visible{outline:3px solid var(--purple,#493663);outline-offset:5px}"
+    },
+    {
+      "name": "Technical disclosure",
+      "kind": "custom",
+      "description": "Native disclosure with authored geometric indicator.",
+      "html": "<details class=\"ds-detail\"><summary>Model assumptions<svg viewBox=\"0 0 20 20\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\"><path d=\"m5 7 5 5 5-5\"/></svg></summary><p>Describe the assumptions and cite their evidence.</p></details>",
+      "css": ".ds-detail{color:var(--ink,#183d33);border-block:1px solid var(--line,#b7c9bc);font:16px/1.65 Arial,Helvetica,sans-serif}.ds-detail summary{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:22px 2px;list-style:none;cursor:pointer;font:550 22px/1.12 Bricolage,Arial,sans-serif}.ds-detail summary::-webkit-details-marker{display:none}.ds-detail svg{width:20px;height:20px;flex-shrink:0}.ds-detail[open] svg{transform:rotate(180deg)}.ds-detail p{padding-bottom:20px}.ds-detail summary:focus-visible{outline:3px solid var(--purple,#493663);outline-offset:5px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The systems worksheet",
+    "overview": "The report uses causal diagrams, comparison tables, and clear reading fields to explain relationships. Green establishes the principal worksheet; pine text and fine rules organize the reading surface.\n\nDetail is available through native disclosures and a searchable directory. This document records the implemented report, not an organization-wide brand commitment.",
+    "keyCharacteristics": [
+      "Geometric causal diagrams with readable labels.",
+      "Strong display type paired with simple body text.",
+      "Tonal fields and rules instead of shadows.",
+      "Native controls and progressive disclosure."
+    ],
+    "rules": [
+      {
+        "name": "The Redundant Signal Rule",
+        "body": "State and evidence distinctions must remain understandable from labels and shapes without color.",
+        "section": "colors"
+      },
+      {
+        "name": "The Heading Carries the Action Rule",
+        "body": "Put the action into the heading rather than adding an eyebrow above it. Supporting state text follows the result heading.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Surface Rule",
+        "body": "Use tonal separation and boundaries to organize the report rather than adding elevation.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep citations close to the claims they support.",
+      "Do preserve native form and disclosure semantics.",
+      "Do pair every color-coded distinction with meaningful text or geometry."
+    ],
+    "donts": [
+      "Don't present the qualitative explorer as an executing neural simulation.",
+      "Don't add external font or script dependencies to the shareable file.",
+      "Don't encode state only through color."
+    ]
+  }
+}

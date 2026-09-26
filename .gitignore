@@ -1,0 +1,5 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.impeccable/review/
+.impeccable/config.local.json
